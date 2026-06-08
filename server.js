@@ -3782,7 +3782,46 @@ app.get("/api/admin/monthly-reports", auth, async (_req, res, next) => {
   } catch (e) { next(e); }
 });
 
-app.use((err, _req, res, _next) => {
+app.use((err, _req, res, _next) => {// =====================================================
+// V50 CLEAN ROUTE ALIASES
+// Purpose: make professional URLs work without .html.
+// Keep legacy .html pages working through express.static(PUBLIC_DIR).
+// =====================================================
+const CLEAN_PAGE_ROUTES = new Map([
+  ["/admin", "whalex-admin.html"],
+  ["/whalex-admin", "whalex-admin.html"],
+  ["/login", "login.html"],
+  ["/user", "user.html"],
+  ["/my-access", "user.html"],
+  ["/pricing", "pricing.html"],
+  ["/products", "products.html"],
+  ["/results", "results.html"],
+  ["/videos", "videos.html"],
+  ["/support", "support.html"],
+  ["/submit-result", "submit-result.html"],
+  ["/privacy", "privacy.html"],
+  ["/terms", "terms.html"],
+  ["/reset-password", "reset-password.html"]
+]);
+
+function sendPublicPage(fileName) {
+  return (_req, res, next) => {
+    const filePath = path.join(PUBLIC_DIR, fileName);
+    if (!fs.existsSync(filePath)) return next();
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    return res.sendFile(filePath);
+  };
+}
+
+for (const [route, fileName] of CLEAN_PAGE_ROUTES.entries()) {
+  app.get(route, sendPublicPage(fileName));
+  app.get(route + "/", sendPublicPage(fileName));
+}
+
+app.get("/dashboard", (_req, res) => res.redirect(302, "/user"));
+app.get("/dashboard/", (_req, res) => res.redirect(302, "/user"));
   console.error(err);
   res.status(400).json({ error: err.message || "Something went wrong." });
 });
