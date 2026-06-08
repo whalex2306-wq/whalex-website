@@ -3783,8 +3783,8 @@ app.get("/api/admin/monthly-reports", auth, async (_req, res, next) => {
 });
 
 // =====================================================
-// V52 CLEAN ROUTE ALIASES - WhaleX
-// Makes clean URLs work without exposing .html filenames.
+// V53 CLEAN ROUTES + NESTED ASSET FIX - WhaleX
+// Makes clean URLs work AND keeps CSS/JS/images loading.
 // Keep this block BEFORE the Express error handler.
 // =====================================================
 function sendWhaleXPage(fileName) {
@@ -3800,10 +3800,53 @@ function sendWhaleXPage(fileName) {
   };
 }
 
-app.get(["/admin", "/admin/", "/admin/login", "/admin/login/", "/whalex-admin", "/whalex-admin/"], sendWhaleXPage("whalex-admin.html"));
-app.get(["/login", "/login/", "/user/login", "/user/login/"], sendWhaleXPage("login.html"));
-app.get(["/user", "/user/", "/my-access", "/my-access/"], sendWhaleXPage("user.html"));
-app.get(["/dashboard", "/dashboard/"], (_req, res) => res.redirect(302, "/user"));
+function redirectClean(target) {
+  return (_req, res) => res.redirect(302, target);
+}
+
+// When an HTML file is served from a clean nested URL such as /admin/login or /user/login,
+// relative links like assets/app.css can be requested as /admin/assets/app.css or /user/assets/app.css.
+// This compatibility middleware maps those nested asset/upload paths back to the real public folder.
+app.use((req, res, next) => {
+  const match = req.path.match(/^\/(admin|user|my-access)\/(assets|uploads)\/(.+)$/);
+  if (!match) return next();
+
+  const [, _section, folder, filePart] = match;
+  const safePart = path.normalize(decodeURIComponent(filePart)).replace(/^([.][.][\/\\])+/, "");
+  const baseDir = path.join(PUBLIC_DIR, folder);
+  const filePath = path.join(baseDir, safePart);
+
+  if (!filePath.startsWith(baseDir + path.sep)) {
+    return res.status(400).send("Bad request");
+  }
+  if (!fs.existsSync(filePath)) return next();
+
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  return res.sendFile(filePath);
+});
+
+// Clean public/admin URLs.
+app.get("/admin", sendWhaleXPage("whalex-admin.html"));
+app.get("/whalex-admin", redirectClean("/admin"));
+app.get("/admin/login", redirectClean("/admin"));
+app.get("/admin/", redirectClean("/admin"));
+app.get("/admin/login/", redirectClean("/admin"));
+app.get("/whalex-admin/", redirectClean("/admin"));
+
+app.get("/login", sendWhaleXPage("login.html"));
+app.get("/user/login", redirectClean("/login"));
+app.get("/login/", redirectClean("/login"));
+app.get("/user/login/", redirectClean("/login"));
+
+app.get("/user", sendWhaleXPage("user.html"));
+app.get("/my-access", redirectClean("/user"));
+app.get("/user/", redirectClean("/user"));
+app.get("/my-access/", redirectClean("/user"));
+
+app.get("/dashboard", redirectClean("/user"));
+app.get("/dashboard/", redirectClean("/user"));
 
 app.use((err, _req, res, _next) => {
   console.error(err);
