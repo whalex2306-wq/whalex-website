@@ -3782,9 +3782,10 @@ app.get("/api/admin/monthly-reports", auth, async (_req, res, next) => {
   } catch (e) { next(e); }
 });
 
-app.use((err, _req, res, _next) => {/// =====================================================
-// V51 CLEAN ROUTES - WhaleX
-// Makes /admin, /login, /user work without .html
+// =====================================================
+// V52 CLEAN ROUTE ALIASES - WhaleX
+// Makes clean URLs work without exposing .html filenames.
+// Keep this block BEFORE the Express error handler.
 // =====================================================
 function sendWhaleXPage(fileName) {
   return (_req, res, next) => {
@@ -3799,21 +3800,12 @@ function sendWhaleXPage(fileName) {
   };
 }
 
-app.get("/admin", sendWhaleXPage("whalex-admin.html"));
-app.get("/admin/", sendWhaleXPage("whalex-admin.html"));
-app.get("/admin/login", sendWhaleXPage("whalex-admin.html"));
-app.get("/admin/login/", sendWhaleXPage("whalex-admin.html"));
+app.get(["/admin", "/admin/", "/admin/login", "/admin/login/", "/whalex-admin", "/whalex-admin/"], sendWhaleXPage("whalex-admin.html"));
+app.get(["/login", "/login/", "/user/login", "/user/login/"], sendWhaleXPage("login.html"));
+app.get(["/user", "/user/", "/my-access", "/my-access/"], sendWhaleXPage("user.html"));
+app.get(["/dashboard", "/dashboard/"], (_req, res) => res.redirect(302, "/user"));
 
-app.get("/login", sendWhaleXPage("login.html"));
-app.get("/login/", sendWhaleXPage("login.html"));
-app.get("/user/login", sendWhaleXPage("login.html"));
-app.get("/user/login/", sendWhaleXPage("login.html"));
-
-app.get("/user", sendWhaleXPage("user.html"));
-app.get("/user/", sendWhaleXPage("user.html"));
-
-app.get("/dashboard", (_req, res) => res.redirect(302, "/user"));
-app.get("/dashboard/", (_req, res) => res.redirect(302, "/user"));
+app.use((err, _req, res, _next) => {
   console.error(err);
   res.status(400).json({ error: err.message || "Something went wrong." });
 });
@@ -3829,8 +3821,9 @@ startExpiryReminderScheduler();
 
 app.listen(PORT, () => {
     console.log(`WhaleX website running at ${BASE_URL}`);
-    console.log(`Private admin URL: ${BASE_URL}/whalex-admin`);
-    console.log(`My Access: ${BASE_URL}/user.html`);
+    console.log(`Private admin URL: ${BASE_URL}/admin`);
+    console.log(`Legacy admin URL: ${BASE_URL}/whalex-admin.html`);
+    console.log(`My Access: ${BASE_URL}/user`);
     console.log(`Default admin password: ${ADMIN_PASSWORD}`);
   });
 }
