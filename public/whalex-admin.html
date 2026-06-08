@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX Private Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body class="page-admin">
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="whalex-admin.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX Admin</span>
+    </a>
+    <div class="nav-links static">
+      <a href="index.html">View Website</a>
+      <a href="user.html">Client Portal</a>
+    </div>
+  </nav>
+</header>
+
+
+<main class="client-shell">
+  <section class="page-hero client-hero">
+    <div class="container">
+      <span class="eyebrow">Private Owner URL</span>
+      <h1>WhaleX Admin Panel</h1>
+      <p class="hero-subtitle page-subline-hidden" style="display:none"></p>
+    </div>
+  </section>
+
+  <section class="client-section">
+    <div class="container">
+      <div id="loginBox" class="admin-card">
+        <h2>Admin Login</h2>
+        
+        <div class="form-grid"><label>Password<input id="adminPassword" type="password" placeholder="Enter admin password" /></label></div>
+        <br/><button class="btn primary" id="loginBtn">Login</button>
+        <div id="loginMsg"></div>
+      </div>
+
+      <div id="adminApp" style="display:none">
+        <div class="page-grid">
+          <aside class="sidebar">
+            <a href="#adminDashboard">Dashboard</a>
+            <a href="#userAccounts">User Accounts</a>
+            <a href="#accessTickets">Access Tickets</a>
+            <a href="#supportTickets">Support Tickets</a>
+            <a href="#monthlyReports">Monthly Reports</a>
+            <a href="#reviews">Reviews Approval</a>
+            <a href="#profits">Profit Approval</a>
+            <a href="#products">Indicator Details</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#settings">Settings</a>
+            <a href="#videos">YouTube Videos</a>
+            <div id="adminLiveStatus" class="live-sync-pill">Live sync: waiting</div>
+            <button id="refreshBtn">Refresh Data</button>
+            <button id="logoutBtn">Logout</button>
+          </aside>
+
+          <div>
+                        <section id="adminDashboard" class="admin-card admin-dashboard-card">
+              <div class="split-title">
+                <div>
+                  <span class="section-kicker">Operations Dashboard</span>
+                  <h2>Admin Dashboard</h2>
+                  <p class="microcopy">Quick view of users, access lifecycle, payments, expiry, support, and latest actions.</p>
+                </div>
+                <button class="btn ghost" type="button" onclick="loadAdmin()">Refresh Dashboard</button>
+              </div>
+              <div id="adminDashboardBox"></div>
+            </section>
+
+            <section id="userAccounts" class="admin-card">
+              <h2>User Access Logins</h2>
+              <p class="microcopy">Users save phone, email, Telegram ID, and TradingView ID here. These details auto-fill their access requests.</p>
+              <div id="userAccountsAdmin" class="item-list"></div>
+            </section>
+
+            <section id="accessTickets" class="admin-card">
+              <div class="split-title">
+                <div>
+                  <h2>Access Tickets</h2>
+                  <p class="microcopy">Every user access request must appear here immediately after submission. This inbox uses both ticket records and fallback audit records.</p>
+                </div>
+                <button class="btn ghost" type="button" onclick="loadAccessTicketsOnly()">Reload Access Inbox</button>
+              </div>
+              <p class="microcopy">Use only Ticket Status: Open, Done, Rejected. Select Start Date and End Date auto-fills immediately from access type.</p>
+              <div id="accessTicketsAdmin" class="item-list"></div>
+            </section>
+
+            <section id="supportTickets" class="admin-card">
+              <h2>Support Tickets</h2>
+              <div id="supportTicketsAdmin" class="item-list"></div>
+            </section>
+<section id="monthlyReports" class="admin-card">
+              <h2>Monthly Onboarding Report</h2>
+              <p class="microcopy">Generate/export monthly report with onboarded users, start date, end date, username, payment status, and access status.</p>
+              <form id="monthlyReportForm" class="form-grid">
+                <label>Month<input name="month" type="month" required></label>
+                <button class="btn primary" type="submit">Preview Report</button>
+                <button class="btn ghost" type="button" id="generateReportBtn">Generate + Save Report</button>
+                <button class="btn ghost" type="button" id="downloadReportBtn">Download CSV</button>
+              </form>
+              <div id="monthlyReportBox"></div>
+            </section>
+
+            <section id="reviews" class="admin-card">
+              <h2>Reviews Approval</h2>
+              <form id="addReviewForm" class="form-grid">
+                <label>Name<input name="name" required></label>
+                <label>Role<input name="role" value="Trader"></label>
+                <label>Rating<select name="rating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>
+                <label>Text<textarea name="text" required></textarea></label>
+                <button class="btn primary" type="submit">Add Approved Review</button>
+              </form>
+              <br/><div id="reviewsAdmin" class="item-list"></div>
+            </section>
+
+            <section id="profits" class="admin-card">
+              <h2>Profit Screenshot Approval</h2>
+              <form id="addProfitForm" class="form-grid" enctype="multipart/form-data">
+                <label>User/Name<input name="name"></label>
+                <label>Title<input name="title" required></label>
+                <label>Date<input name="date" type="date"></label>
+                <label>Image<input name="image" type="file" accept="image/*"></label>
+                <label style="grid-column:1/-1">Caption<textarea name="caption"></textarea></label>
+                <button class="btn primary" type="submit">Upload Approved Profit</button>
+              </form>
+              <br/><div id="profitsAdmin" class="item-list"></div>
+            </section>
+
+            <section id="products" class="admin-card">
+              <h2>All Three Indicator Details</h2>
+              <div id="productsAdmin"></div>
+            </section>
+
+            <section id="pricing" class="admin-card">
+              <h2>Pricing & Access Plans</h2>
+              <p class="microcopy">Control visible pricing and prepare future plan durations. For now, Monthly and Trial are enabled by default.</p>
+              <form id="pricingForm" class="form-grid"></form>
+            </section>
+            <section id="settings" class="admin-card">
+              <h2>Website & Payment Settings</h2>
+              <p class="microcopy">UPI QR is generated automatically from UPI ID, UPI Payee Name, and current pricing. These details are shown on Buy Access and My Access.</p>
+              <form id="settingsForm" class="form-grid"></form>
+            </section>
+
+            <section id="videos" class="admin-card">
+              <h2>YouTube Videos</h2>
+              <form id="addVideoForm" class="form-grid">
+                <label>Title<input name="title" required></label>
+                <label>YouTube Video ID<input name="youtubeId" placeholder="Example: dQw4w9WgXcQ"></label>
+                <label style="grid-column:1/-1">Description<textarea name="description"></textarea></label>
+                <button class="btn primary" type="submit">Add Video</button>
+              </form>
+              <br/><div id="videosAdmin" class="item-list"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/admin-v4.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+</body>
+</html>

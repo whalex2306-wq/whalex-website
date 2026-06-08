@@ -1,0 +1,129 @@
+{
+  "settings": {
+    "brandName": "WhaleX",
+    "supportEmail": "YOUR_SUPPORT_EMAIL_HERE",
+    "telegramLink": "YOUR_TELEGRAM_LINK_HERE",
+    "razorpayLink": "YOUR_RAZORPAY_PAYMENT_LINK_HERE",
+    "upiId": "YOUR_UPI_ID_HERE",
+    "heroTitle": "WhaleX \u2014 premium structure for serious traders.",
+    "heroSubtitle": "A black-and-gold TradingView indicator suite built around structure, OrderFlow zones, and risk-first execution planning.",
+    "marketLine": "Built for BTC, Gold, Forex, and index traders who want cleaner execution logic."
+  },
+  "pricing": {
+    "planName": "WhaleX V1 Access",
+    "oldPrice": "\u20b915,000",
+    "currentPrice": "\u20b910,000",
+    "discountText": "Launch discount: Save \u20b95,000"
+  },
+  "slides": [
+    {
+      "kicker": "WhaleX Suite",
+      "title": "Structure first. Signal second.",
+      "text": "Read the market with cleaner structure, zones, and risk visibility instead of chasing every candle.",
+      "cta": "Explore Indicators",
+      "link": "products.html"
+    },
+    {
+      "kicker": "OrderFlow",
+      "title": "Zones, POC, retest, reclaim.",
+      "text": "Bring orderflow-style decision support into TradingView with a clean black-and-gold interface.",
+      "cta": "See OrderFlow",
+      "link": "products.html#orderflow"
+    },
+    {
+      "kicker": "Risk Manager",
+      "title": "Trade size before trade entry.",
+      "text": "Plan risk, stop distance, and lot sizing before execution \u2014 discipline starts before the signal.",
+      "cta": "View Pricing",
+      "link": "pricing.html"
+    }
+  ],
+  "products": [
+    {
+      "id": "whalex",
+      "name": "WhaleX",
+      "tag": "Core Structure Engine",
+      "description": "WhaleX is the main structure indicator. It is designed to help traders understand market direction, clean structure shifts, and trade context without adding unnecessary chart noise.",
+      "features": [
+        "Core market-structure reading",
+        "Clean signal-support workflow",
+        "Designed for TradingView invite-only access",
+        "Useful for BTC, Gold, Forex, and index traders",
+        "Premium black-and-gold visual experience"
+      ]
+    },
+    {
+      "id": "orderflow",
+      "name": "WhaleX OrderFlow",
+      "tag": "Zones, POC, Retest/Reclaim",
+      "description": "WhaleX OrderFlow focuses on zone-based decision support. It helps traders read top/bottom zones, POC context, volume-confirmed areas, retest behavior, and reclaim logic.",
+      "features": [
+        "Top and bottom zone framework",
+        "POC and zone context",
+        "Volume-confirmed decision support",
+        "Retest/reclaim style analysis",
+        "Built for structured intraday orderflow reading"
+      ]
+    },
+    {
+      "id": "risk-manager",
+      "name": "WhaleX Risk Manager",
+      "tag": "Risk + Lot Planning",
+      "description": "WhaleX Risk Manager helps users plan trade risk before entering the market. It focuses on account balance, risk percentage, stop-loss distance, and position sizing discipline.",
+      "features": [
+        "Risk-percentage based planning",
+        "Lot-size and stop-distance support",
+        "Start-date and end-date access tracking in tickets",
+        "Beginner-friendly risk discipline",
+        "Designed to reduce emotional position sizing"
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "name": "Early WhaleX User",
+      "role": "BTC / Gold Trader",
+      "rating": 5,
+      "text": "The chart feels more structured. WhaleX helped me stop taking random entries.",
+      "status": "approved",
+      "createdAt": "2026-05-29"
+    },
+    {
+      "id": "rev-2",
+      "name": "Community Trader",
+      "role": "Intraday Trader",
+      "rating": 5,
+      "text": "Risk Manager is simple and useful before entering a trade. Good for discipline.",
+      "status": "approved",
+      "createdAt": "2026-05-29"
+    }
+  ],
+  "profits": [
+    {
+      "id": "profit-1",
+      "name": "Sample User",
+      "title": "Sample Profit Screenshot",
+      "caption": "Replace this with real approved user proof.",
+      "image": "/assets/profit-placeholder.svg",
+      "date": "2026-05-29",
+      "status": "approved",
+      "createdAt": "2026-05-29"
+    }
+  ],
+  "videos": [
+    {
+      "id": "vid-1",
+      "title": "WhaleX Setup Guide",
+      "youtubeId": "",
+      "description": "Add your YouTube video ID from the admin panel.",
+      "status": "approved",
+      "createdAt": "2026-05-29"
+    }
+  ],
+  "paymentProofs": [],
+  "accessTickets": [],
+  "supportTickets": [],
+  "monthlyReports": [],
+  "userAccounts": []
+}

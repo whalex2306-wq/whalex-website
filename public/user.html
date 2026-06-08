@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX My Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body class="page-my-access">
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Indicators</a>
+      <a href="results.html">Reviews & Results</a>
+      <a href="videos.html">Videos</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="login.html">Login / Create Account</a>
+      <a href="user.html">My Access</a>
+    </div>
+  </nav>
+</header>
+
+
+<main data-protected-page="true" class="client-shell my-access-shell">
+  <section class="page-hero client-hero">
+    <div class="container">
+      <span class="eyebrow">My Access</span>
+      <h1>My Access</h1>
+      <p class="hero-subtitle my-access-subline" style="display:none"></p>
+      <div class="hero-actions">
+        <a class="btn primary" href="login.html" data-hide-when-logged-in>Login / Create Account</a>
+        <a class="btn ghost" href="pricing.html">Buy Access</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="client-section">
+    <div class="container narrow-page">
+      <section id="activeAccessDashboard" class="user-card active-access-dashboard-card">
+        <div class="split-title no-action">
+          <div>
+            <span class="section-kicker">Access Dashboard</span>
+            <h2>Active Access</h2>
+            <p class="section-subline">Your current WhaleX access details will appear here.</p>
+          </div>
+        </div>
+        <div id="activeAccessDashboardBox"></div>
+      </section>
+
+
+
+      <section id="accessTracker" class="user-card access-tracker-card">
+        <div class="split-title no-action">
+          <div>
+            <span class="section-kicker">Access Tracker</span>
+            <h2>Track Your Access Request</h2>
+          </div>
+</div>
+
+        <form id="accessTrackerForm" class="form-grid compact-form">
+          <label>TradingView ID<input name="tradingViewUsername" required></label>
+          <label>Access Type<select name="plan" id="accessPlan"><option>WhaleX V1 Access</option><option>3-Day Trial Access</option></select></label>
+                    <div class="access-payment-card paid-access-only" id="accessPaymentCard">
+            <div>
+              <span class="section-kicker">Payment Details</span>
+              <strong id="accessPaymentAmount">Monthly Access</strong>
+              <p>Pay using UPI/QR, then enter UTR and upload payment proof below.</p>
+              <div class="upi-box"><span>UPI ID</span><strong id="accessUpiId">Loading...</strong></div>
+              <div class="upi-box"><span>Payee</span><strong id="accessUpiPayee">WhaleX</strong></div>
+            </div>
+            <div class="access-payment-qr">
+              <img id="accessUpiQrImage" src="/api/payment/upi-qr.svg" alt="WhaleX UPI QR code" />
+            </div>
+          </div>
+          <label class="payment-id-field paid-access-only">Payment ID / UTR<input name="paymentId" id="paymentIdInput" placeholder="Enter UTR / UPI Ref No. / Transaction ID"><small class="field-hint">Mandatory for monthly paid access.</small></label>
+          <div class="utr-info-card paid-access-only" id="utrInfoCard">
+            <strong>Where to get Payment ID / UTR?</strong>
+            <p>After paying through UPI, open your PhonePe / Google Pay / Paytm / bank app → Transaction History → select the successful WhaleX payment → copy the <b>UTR</b>, <b>UPI Ref No.</b>, <b>Transaction ID</b>, or <b>Bank Reference No.</b>. If paid through Razorpay, enter the Razorpay Payment ID / Receipt ID.</p>
+          </div>
+          <label class="payment-proof-field paid-access-only">Payment Proof<input name="paymentProof" id="paymentProofInput" type="file" accept="image/*,.pdf"><small class="field-hint">Mandatory for monthly paid access. Upload successful payment screenshot/PDF.</small></label>
+          <label class="access-note-field paid-access-only" style="grid-column:1/-1">Note<textarea name="note" placeholder="Any message for WhaleX"></textarea></label>
+          <button class="btn primary access-submit-btn" type="submit">Create Access Request</button>
+        </form>
+        <div id="accessTicketMsg"></div>
+      </section>
+<section id="trialFeedback" class="user-card">
+        <h2>3-Day Trial Feedback</h2>
+        
+        <form id="trialFeedbackForm" class="form-grid">
+          <label>Trial Ticket ID<input name="ticketId" required placeholder="access-..."></label>
+          <label>Email ID<input name="email" type="email" required></label>
+          <label>Rating<select name="rating" required><option >5 - Excellent</option><option >4 - Good</option><option >3 - Average</option><option >2 - Poor</option><option >1 - Very Poor</option></select></label>
+          <label style="grid-column:1/-1">Feedback<textarea name="feedback" required placeholder="How was your 3-day WhaleX trial?"></textarea></label>
+          <label style="grid-column:1/-1">Attachment / Profit Screenshot <small class="field-hint">Optional. Upload profit screenshot, result, or any supporting image/PDF.</small><input name="attachment" type="file" accept="image/*,.pdf"></label>
+          <button class="btn primary" type="submit">Submit Trial Feedback</button>
+        </form>
+        <div id="trialFeedbackMsg"></div>
+      </section>
+    </div>
+  </section>
+</main>
+
+
+
+<div id="trialFeedbackPopup" class="whalex-modal feedback-popup" aria-hidden="true">
+  <div class="whalex-modal-backdrop" data-close-feedback-popup="true"></div>
+  <section class="whalex-modal-card feedback-popup-card" role="dialog" aria-modal="true" aria-labelledby="trialFeedbackPopupTitle">
+    <button class="modal-close-x feedback-later-btn" id="closeTrialFeedbackPopup" type="button" aria-label="Close feedback popup">×</button>
+
+    <div class="modal-icon-badge">★</div>
+    <span class="section-kicker">Trial Feedback Required</span>
+    <h2 id="trialFeedbackPopupTitle">How was your 3-day WhaleX trial?</h2>
+    <p class="modal-copy">Your feedback helps WhaleX improve and helps us decide the next access/support step. Please share your honest experience.</p>
+
+    <form id="trialFeedbackPopupForm" class="forgot-modal-form feedback-popup-form">
+      <label>Trial Ticket ID
+        <input name="ticketId" id="trialFeedbackPopupTicketId" required readonly>
+      </label>
+
+      <label>Email ID
+        <input name="email" id="trialFeedbackPopupEmail" type="email" required readonly>
+      </label>
+
+      <label>Rating
+        <select name="rating" required>
+          <option>5 - Excellent</option>
+          <option>4 - Good</option>
+          <option>3 - Average</option>
+          <option>2 - Poor</option>
+          <option>1 - Very Poor</option>
+        </select>
+      </label>
+
+      <label>Feedback
+        <textarea name="feedback" required placeholder="What worked well? What should WhaleX improve?"></textarea>
+      </label>
+
+      <label>Attachment / Profit Screenshot
+        <input name="attachment" type="file" accept="image/*,.pdf">
+      </label>
+      <p class="feedback-attachment-help">Optional: upload profit screenshot, result, or any supporting image/PDF.</p>
+
+      <div class="feedback-popup-actions">
+        <button class="btn primary" type="submit">Submit Feedback</button>
+        <button class="btn ghost feedback-later-btn" type="button">Remind me later</button>
+      </div>
+
+      <div id="trialFeedbackPopupMsg"></div>
+    </form>
+  </section>
+</div>
+
+<footer class="compact-footer">
+  <div class="container compact-footer-inner">
+    <span>© WhaleX</span>
+    <div>
+      <a href="login.html">Login</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/access.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+<script src="assets/site-user.js?v=101"></script>
+</body>
+</html>

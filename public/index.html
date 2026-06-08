@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX | Premium TradingView Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body>
+
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Indicators</a>
+      <a href="results.html">Reviews & Results</a>
+      <a href="videos.html">Videos</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="login.html">Login / Create Account</a>
+      <a href="user.html">My Access</a>
+    </div>
+  </nav>
+</header>
+
+
+
+<main class="screen-shell home-shell">
+  <section class="screen-page home-screen">
+    <div class="container home-layout">
+      <aside class="home-left">
+        <div class="eyebrow">Premium TradingView Suite</div>
+        <h1>Trade with structure. Not noise.</h1>
+        <p>WhaleX gives traders a premium black-and-gold workflow for structure, OrderFlow zones, and risk-first execution planning.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="pricing.html">Buy Access</a>
+          <a class="btn ghost" href="products.html">Explore Suite</a>
+        </div>
+
+        <div class="mini-nav-cards">
+          <a href="products.html"><span>01</span><strong>Indicators</strong></a>
+          <a href="results.html"><span>02</span><strong>Results</strong></a>
+          <a href="videos.html"><span>03</span><strong>Videos</strong></a>
+        </div>
+      </aside>
+
+      <section class="slide-dashboard">
+        <div class="slide-top">
+          <div><span></span><span></span><span></span></div>
+          <strong>WhaleX Structure</strong>
+        </div>
+
+        <div class="screen-slider" id="homeSlider">
+          <article class="screen-slide active">
+            <div class="chart-card">
+              <div class="zone top">TOP ZONE</div>
+              <svg viewBox="0 0 720 400">
+                <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".5" stop-color="#f8c84e"/><stop offset="1" stop-color="#a66a12"/></linearGradient></defs>
+                <g opacity=".13" stroke="white"><line x1="0" y1="70" x2="720" y2="70"/><line x1="0" y1="150" x2="720" y2="150"/><line x1="0" y1="230" x2="720" y2="230"/><line x1="0" y1="310" x2="720" y2="310"/></g>
+                <polyline points="28,318 95,270 155,292 226,220 294,245 360,145 430,182 505,104 575,132 662,74" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="360" cy="145" r="11" fill="#35e7a2"/><circle cx="662" cy="74" r="11" fill="#ff6b7a"/>
+              </svg>
+              <div class="zone bottom">BOTTOM ZONE</div>
+              <div class="signal buy">BUY</div>
+              <div class="signal sell">SELL</div>
+            </div>
+          </article>
+
+          <article class="screen-slide" id="homeSuiteSlide">
+            <div class="three-feature-screen live-product-grid" id="homeSuiteGrid" data-live-products="true">
+              <div><span>...</span><h3>Loading</h3><p>Loading indicator details...</p></div>
+              <div><span>...</span><h3>Loading</h3><p>Loading indicator details...</p></div>
+              <div><span>...</span><h3>Loading</h3><p>Loading indicator details...</p></div>
+            </div>
+          </article>
+
+          <article class="screen-slide">
+            <div class="three-feature-screen">
+              <div><span>01</span><h3>Buy access</h3><p>Complete payment using online payment or UPI QR.</p></div>
+              <div><span>02</span><h3>Submit username</h3><p>Share your exact TradingView username from My Access.</p></div>
+              <div><span>03</span><h3>Start using</h3><p>Add WhaleX from TradingView invite-only scripts once access is enabled.</p></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="slider-controls">
+          <button data-slide="0" class="active">Structure</button>
+          <button data-slide="1">Suite</button>
+          <button data-slide="2">Access</button>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+
+
+<footer class="compact-footer">
+  <div class="container compact-footer-inner">
+    <span>© WhaleX</span>
+    <div>
+      <a href="login.html">Login</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/slide-app.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+<script src="assets/site-user.js?v=101"></script>
+</body>
+</html>

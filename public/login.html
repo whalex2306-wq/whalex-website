@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX Login / Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body class="page-login page-login-v42">
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Indicators</a>
+      <a href="results.html">Reviews & Results</a>
+      <a href="videos.html">Videos</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="login.html">Login / Create Account</a>
+      <a href="user.html">My Access</a>
+    </div>
+  </nav>
+</header>
+
+<main class="client-shell login-clean-page">
+  <section class="page-hero client-hero login-clean-hero">
+    <div class="container">
+      <span class="eyebrow">Login / Create Account</span>
+      <h1>WhaleX account access</h1>
+    </div>
+  </section>
+
+  <section class="client-section login-clean-section">
+    <div class="container narrow-page">
+      <section class="user-card login-clean-card">
+        <div class="login-clean-title">
+          <div>
+            <h2>User Access Login</h2>
+          </div>
+        </div>
+
+        <div id="authForms" class="auth-grid login-clean-grid">
+          <form id="loginForm" class="auth-card login-auth-card">
+            <h3>Existing User Login</h3>
+
+            <label>Email ID
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+
+            <label>Password
+              <input name="password" type="password" autocomplete="current-password" required>
+            </label>
+
+            <button class="link-btn forgot-link" id="showForgotPassword" type="button">Forgot password?</button>
+            <button class="btn primary login-submit-btn" type="submit">Login</button>
+            <div id="loginMsg"></div>
+          </form>
+
+          <form id="registerForm" class="auth-card register-auth-card">
+            <h3>New User — Create Account</h3>
+
+            <label>Name
+              <input name="name" required autocomplete="name">
+            </label>
+
+            <label>Email ID
+              <input name="email" type="email" required autocomplete="email">
+            </label>
+
+            <label>Phone Number
+              <input name="phone" required inputmode="tel" autocomplete="tel">
+            </label>
+
+            <label>Telegram ID
+              <input name="telegramId" required placeholder="@yourtelegram">
+            </label>
+
+            <label>TradingView ID
+              <input name="tradingViewUsername" required>
+            </label>
+
+            <label>Password
+              <input name="password" type="password" autocomplete="new-password" required>
+            </label>
+
+            <button class="btn ghost register-submit-btn" type="submit">Create Account</button>
+            <div id="registerMsg"></div>
+          </form>
+        </div>
+
+      </section>
+    </div>
+  </section>
+</main>
+
+
+<div id="forgotPasswordModal" class="whalex-modal" aria-hidden="true">
+  <div class="whalex-modal-backdrop" data-close-forgot="true"></div>
+  <section class="whalex-modal-card forgot-modal-card" role="dialog" aria-modal="true" aria-labelledby="forgotPasswordTitle">
+    <button class="modal-close-x" id="closeForgotPassword" type="button" aria-label="Close reset password popup">×</button>
+
+    <div class="modal-icon-badge">↻</div>
+    <h2 id="forgotPasswordTitle">Reset Password</h2>
+    <p class="modal-copy">Enter your registered email ID. If the account exists, WhaleX will send a reset link.</p>
+
+    <form id="forgotPasswordForm" class="forgot-modal-form">
+      <label>Email ID
+        <input name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </label>
+
+      <button class="btn primary forgot-submit-btn" type="submit">Send Reset Link</button>
+      <div id="forgotMsg"></div>
+    </form>
+  </section>
+</div>
+
+<footer class="compact-footer">
+  <div class="container compact-footer-inner">
+    <span>© WhaleX</span>
+    <div>
+      <a href="login.html">Login</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/login.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+<script src="assets/site-user.js?v=101"></script>
+</body>
+</html>

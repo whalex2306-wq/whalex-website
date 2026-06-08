@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX Submit Result</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body class="page-submit-result">
+
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Indicators</a>
+      <a href="results.html">Reviews & Results</a>
+      <a href="videos.html">Videos</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="login.html">Login / Create Account</a>
+      <a href="user.html">My Access</a>
+    </div>
+  </nav>
+</header>
+
+
+
+<main class="client-shell">
+  <section class="page-hero client-hero">
+    <div class="container">
+      <span class="eyebrow">Submit Result</span>
+      <h1>Share your WhaleX experience.</h1>
+      <p class="hero-subtitle page-subline-hidden" style="display:none"></p>
+    </div>
+  </section>
+
+  <section class="client-section">
+    <div class="container narrow-page">
+      <section id="review" class="user-card">
+        <h2>Submit Customer Review</h2>
+        <form id="reviewForm" class="form-grid">
+          <label>Name<input name="name" required></label>
+          <label>Role<input name="role" value="Trader"></label>
+          <label>Rating<select name="rating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>
+          <label style="grid-column:1/-1">Review<textarea name="text" required></textarea></label>
+          <button class="btn primary" type="submit">Submit Review</button>
+        </form>
+        <div id="reviewMsg"></div>
+      </section>
+
+      <section id="profit" class="user-card">
+        <h2>Submit Profit Screenshot</h2>
+        <p class="microcopy">Please hide sensitive account details before uploading.</p>
+        <form id="profitForm" class="form-grid" enctype="multipart/form-data">
+          <label>Name<input name="name"></label>
+          <label>Title<input name="title" required></label>
+          <label>Date<input name="date" type="date"></label>
+          <label>Screenshot<input name="image" type="file" accept="image/*" required></label>
+          <label style="grid-column:1/-1">Caption<textarea name="caption"></textarea></label>
+          <button class="btn primary" type="submit">Submit Screenshot</button>
+        </form>
+        <div id="profitMsg"></div>
+      </section>
+    </div>
+  </section>
+</main>
+
+
+
+<footer class="compact-footer">
+  <div class="container compact-footer-inner">
+    <span>© WhaleX</span>
+    <div>
+      <a href="login.html">Login</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/submit-result.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+<script src="assets/site-user.js?v=101"></script>
+</body>
+</html>

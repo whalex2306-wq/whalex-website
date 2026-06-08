@@ -1,0 +1,5059 @@
+:root {
+  --bg:#050403;
+  --bg2:#0b0805;
+  --card:rgba(255,255,255,.065);
+  --text:#fff8e7;
+  --muted:#b9ae96;
+  --line:rgba(248,200,78,.22);
+  --accent:#f8c84e;
+  --accent2:#a66a12;
+  --gold-soft:#fff1b8;
+  --green:#35e7a2;
+  --red:#ff6b7a;
+  --dark:#080604;
+  --shadow:0 34px 110px rgba(0,0,0,.58);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 14% 5%,rgba(248,200,78,.16),transparent 28%),
+    radial-gradient(circle at 90% 2%,rgba(166,106,18,.24),transparent 30%),
+    linear-gradient(180deg,#050403 0%,#0b0805 54%,#050403 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background-image:linear-gradient(rgba(248,200,78,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(248,200,78,.04) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(circle at 50% 20%,black,transparent 75%);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.site-header{position:sticky;top:0;z-index:30;backdrop-filter:blur(22px);background:rgba(5,4,3,.84);border-bottom:1px solid var(--line)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:inline-flex;align-items:center;gap:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.brand-img{width:60px;height:60px;border-radius:18px;object-fit:cover;box-shadow:0 0 0 1px rgba(248,200,78,.24),0 18px 44px rgba(248,200,78,.18)}
+.brand-img.small{width:44px;height:44px;border-radius:14px}
+.brand-text{font-size:1.3rem;background:linear-gradient(135deg,#fff4c8,#f8c84e 45%,#a66a12);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;align-items:center;gap:20px;color:var(--muted);font-size:.92rem}
+.nav-links a:hover{color:var(--gold-soft)}
+.nav-cta{color:#130d04!important;background:linear-gradient(135deg,#fff4bd,#f8c84e 52%,#9c6411);padding:12px 18px;border-radius:999px;font-weight:900;box-shadow:0 14px 38px rgba(248,200,78,.24)}
+.menu-btn{display:none;border:0;background:none;color:var(--text);font-size:1.8rem}
+.screen-shell{min-height:calc(100vh - 82px);display:grid}
+.screen-page{min-height:calc(100vh - 82px);display:grid;align-items:center;padding:28px 0;position:relative}
+.home-screen:after{content:"";position:absolute;right:-20vw;top:8vh;width:54vw;height:54vw;border-radius:50%;background:radial-gradient(circle,rgba(248,200,78,.20),transparent 65%);filter:blur(8px);pointer-events:none}
+.home-layout,.page-screen-layout{position:relative;z-index:1;display:grid;grid-template-columns:.88fr 1.12fr;gap:46px;align-items:center}
+.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;font-weight:900}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(3.05rem,6vw,5.85rem);line-height:.92;letter-spacing:-.085em;margin:16px 0 24px}
+h2{font-size:clamp(2rem,4vw,3.4rem);line-height:.98;letter-spacing:-.065em}
+h3{font-size:1.22rem;letter-spacing:-.035em}
+.home-left p,.page-intro p,.product-screen-card p,.mini-card p,.video-card p,.upi-screen-card p{color:var(--muted);line-height:1.72;font-size:1.05rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 22px}
+.btn{border:1px solid transparent;border-radius:999px;min-height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{color:#120d04;background:linear-gradient(135deg,#fff4bd,#f8c84e 50%,#9e6512);box-shadow:0 18px 48px rgba(248,200,78,.24)}
+.btn.ghost{color:var(--gold-soft);border-color:rgba(248,200,78,.25);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))}
+.btn.danger{color:white;background:rgba(255,107,122,.24);border-color:rgba(255,107,122,.42)}
+.btn.full{width:100%}
+.mini-nav-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.mini-nav-cards a,.tab-panel,.slide-dashboard,.price-screen-card,.upi-screen-card,.mini-card,.video-card,.admin-card,.user-card,.legal-card{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.078),rgba(255,255,255,.032)),rgba(255,255,255,.035);
+  border-radius:28px;
+  box-shadow:0 20px 70px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.mini-nav-cards a{padding:18px}
+.mini-nav-cards span,.approval-stack span,.mini-card span{display:block;color:var(--muted);font-size:.82rem}
+.mini-nav-cards strong,.approval-stack strong{display:block;color:var(--gold-soft);margin-top:6px}
+.slide-dashboard{overflow:hidden}
+.slide-top{height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;background:rgba(3,3,3,.76);border-bottom:1px solid var(--line)}
+.slide-top div{display:flex;gap:8px}
+.slide-top span{width:10px;height:10px;border-radius:50%;background:rgba(248,200,78,.34)}
+.slide-top strong{color:var(--gold-soft);font-size:.88rem}
+.screen-slider{position:relative;min-height:520px}
+.screen-slide{position:absolute;inset:0;padding:22px;opacity:0;transform:translateX(22px) scale(.985);transition:.45s ease;display:grid;align-items:center}
+.screen-slide.active{opacity:1;transform:translateX(0) scale(1);z-index:2}
+.chart-card{position:relative;min-height:470px;display:grid;place-items:center;background:rgba(3,3,3,.55);border:1px solid rgba(248,200,78,.16);border-radius:24px;overflow:hidden}
+.chart-card svg{width:100%;filter:drop-shadow(0 0 24px rgba(248,200,78,.22))}
+.zone{position:absolute;left:20px;right:20px;height:44px;display:flex;align-items:center;padding-left:18px;border-radius:16px;border:1px solid var(--line);font-size:.74rem;letter-spacing:.15em;font-weight:900}
+.zone.top{top:20px;background:rgba(255,107,122,.1);color:#ffdce2}
+.zone.bottom{bottom:20px;background:rgba(53,231,162,.09);color:#dcfff3}
+.signal{position:absolute;font-weight:900;padding:8px 12px;border-radius:999px;font-size:.8rem}
+.signal.buy{left:24%;bottom:24%;background:var(--green);color:var(--dark)}
+.signal.sell{right:12%;top:20%;background:var(--red);color:white}
+.three-feature-screen{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.three-feature-screen div{min-height:260px;border:1px solid var(--line);border-radius:24px;padding:22px;background:rgba(255,255,255,.04);display:flex;flex-direction:column;justify-content:flex-end}
+.three-feature-screen span{color:var(--accent);font-weight:900;font-size:2rem}
+.three-feature-screen p,.approval-screen p{color:var(--muted);line-height:1.65}
+.approval-screen{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.approval-stack{display:grid;gap:12px}
+.approval-stack div{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:18px;padding:18px}
+.slider-controls{display:flex;gap:10px;padding:16px;border-top:1px solid var(--line);background:rgba(3,3,3,.32)}
+.slider-controls button,.tab-buttons button{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--muted);border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}
+.slider-controls button.active,.tab-buttons button.active{background:linear-gradient(135deg,#fff4bd,#f8c84e 52%,#9c6411);color:#130d04}
+.page-intro{max-width:460px}
+.tab-panel{padding:18px;min-height:560px;display:grid;grid-template-rows:auto 1fr}
+.tab-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.product-screen-card{display:grid;grid-template-columns:260px 1fr;gap:26px;align-items:center;border:1px solid rgba(248,200,78,.16);border-radius:24px;padding:28px;background:rgba(3,3,3,.42)}
+.product-big-mark{width:100%;aspect-ratio:1;display:grid;place-items:center;border-radius:28px;border:1px solid var(--line);background:radial-gradient(circle,rgba(248,200,78,.2),rgba(255,255,255,.035));font-size:4rem;font-weight:900;color:var(--gold-soft)}
+ul{color:var(--muted);line-height:1.85;padding-left:20px}
+.cards-screen{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-content:start;max-height:500px;overflow:auto;padding-right:5px}
+.mini-card{padding:22px}
+.review-stars{color:var(--accent);letter-spacing:2px;margin-bottom:12px}
+.image-card img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px;border:1px solid var(--line);margin-bottom:14px}
+.video-screen-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-content:start;max-height:500px;overflow:auto;padding-right:5px}
+.video-card{padding:18px}
+.video-frame{aspect-ratio:16/9;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(145deg,rgba(248,200,78,.12),rgba(255,255,255,.035));display:grid;place-items:center;color:var(--muted);text-align:center;padding:18px}
+.video-frame iframe{width:100%;height:100%;border:0}
+.pricing-screen-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+.price-screen-card,.upi-screen-card{padding:28px}
+.badge{display:inline-flex;border-radius:999px;padding:8px 12px;background:rgba(248,200,78,.13);color:var(--accent);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;border:1px solid rgba(248,200,78,.17)}
+.badge.muted{color:#dcfff3;background:rgba(53,231,162,.1);border-color:rgba(53,231,162,.18)}
+.old-price{color:var(--muted);text-decoration:line-through;font-weight:900;font-size:1.35rem}
+.price{font-size:3.7rem;font-weight:900;letter-spacing:-.08em;background:linear-gradient(135deg,#fff4bd,#f8c84e 50%,#ad7017);-webkit-background-clip:text;background-clip:text;color:transparent}
+.discount{display:inline-flex;margin-top:8px;padding:8px 12px;border-radius:999px;background:rgba(53,231,162,.10);border:1px solid rgba(53,231,162,.24);color:#dcfff3;font-weight:900}
+.upi-box{margin:18px 0;padding:16px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.052)}
+.upi-box span,.upi-box strong{display:block}.upi-box span{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+.compact-footer{border-top:1px solid var(--line);padding:16px 0;color:var(--muted)}
+.compact-footer-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:.9rem}
+.compact-footer a{margin-left:14px}
+.admin-card,.user-card,.legal-card{padding:26px;margin-bottom:18px}
+.page-hero{padding:70px 0 28px}
+.page-grid{display:grid;grid-template-columns:290px 1fr;gap:22px;align-items:start}
+.sidebar{position:sticky;top:100px;display:grid;gap:10px}
+.sidebar a,.sidebar button{text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.055);color:var(--text);border-radius:16px;padding:13px 15px;cursor:pointer;font-weight:800}
+input,textarea,select{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.075);color:var(--text);border-radius:14px;padding:13px 14px;font:inherit;outline:none}
+textarea{min-height:96px;resize:vertical}
+label{display:grid;gap:8px;color:var(--muted);font-size:.9rem;font-weight:700}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.item-list{display:grid;gap:12px}.list-item{border:1px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.045)}.list-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.status{display:inline-flex;border-radius:999px;padding:5px 10px;font-size:.76rem;font-weight:900;background:rgba(255,255,255,.1);color:var(--muted)}.status.approved{color:#dcfff3;background:rgba(53,231,162,.12)}.status.pending{color:#fff0c7;background:rgba(248,200,78,.14)}
+.notice{padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(248,200,78,.10);color:#fff0c7;margin:12px 0}.error{background:rgba(255,107,122,.12);color:#ffdce2}
+@media(max-width:1060px){
+  .home-layout,.page-screen-layout,.pricing-screen-grid{grid-template-columns:1fr}
+  .screen-page{min-height:auto;padding:56px 0}
+  .screen-slider{min-height:500px}
+  .page-intro{max-width:760px}
+}
+@media(max-width:860px){
+  .nav{height:74px}.brand-img{width:50px;height:50px}
+  .nav-links{display:none;position:absolute;top:74px;left:20px;right:20px;padding:20px;border:1px solid var(--line);border-radius:20px;background:rgba(5,4,3,.96);flex-direction:column;align-items:flex-start}
+  .nav-links.open{display:flex}.menu-btn{display:block}
+  .mini-nav-cards,.three-feature-screen,.approval-screen,.product-screen-card,.cards-screen,.video-screen-grid,.page-grid,.form-grid{grid-template-columns:1fr}
+  .screen-slide{position:relative;display:none}
+  .screen-slide.active{display:grid}
+  .screen-slider{min-height:auto}
+  .chart-card{min-height:330px}
+  .tab-panel{min-height:auto}
+  .cards-screen,.video-screen-grid{max-height:none;overflow:visible}
+  .sidebar{position:static}
+}
+@media(max-width:560px){
+  .container{width:min(100% - 28px,1180px)}
+  h1{font-size:3.05rem}
+  .screen-page{padding:42px 0}
+  .slider-controls,.tab-buttons{overflow-x:auto;flex-wrap:nowrap}
+  .slider-controls button,.tab-buttons button{white-space:nowrap}
+  .compact-footer-inner{flex-direction:column;align-items:flex-start}
+}
+
+
+/* V4 client/admin ticket system */
+.client-shell {
+  min-height: calc(100vh - 82px);
+}
+
+.client-hero {
+  padding: 58px 0 24px;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(circle at 80% 0%, rgba(248,200,78,.12), transparent 36%);
+}
+
+.client-section {
+  padding: 28px 0 70px;
+}
+
+.ticket-status-card {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255,255,255,.045);
+}
+
+.ticket-status-card h3 {
+  color: var(--gold-soft);
+}
+
+.client-approved-screen {
+  margin-top: 16px;
+}
+
+.nav-links.static {
+  display: flex;
+}
+
+@media(max-width:860px) {
+  .client-hero {
+    padding: 44px 0 20px;
+  }
+}
+
+
+/* V5 monthly report */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+  color: var(--text);
+}
+.report-table th,
+.report-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.report-table th {
+  color: var(--gold-soft);
+  font-size: .85rem;
+}
+.report-table small {
+  color: var(--muted);
+}
+
+
+/* V7 public cleanup */
+.legal-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg,rgba(255,255,255,.078),rgba(255,255,255,.032)),rgba(255,255,255,.035);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.legal-card p {
+  color: var(--muted);
+  line-height: 1.72;
+}
+.compact-footer-inner div a:first-child {
+  margin-left: 0;
+}
+
+
+/* V8 relevant-page layout */
+.narrow-page {
+  max-width: 960px;
+}
+.user-card + .user-card {
+  margin-top: 18px;
+}
+.nav-links .nav-cta {
+  color: #130d04 !important;
+}
+
+
+/* V9 trial access and feedback */
+.field-hint {
+  display: block;
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 500;
+}
+
+
+/* V10 user access login */
+.auth-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 18px;
+}
+.auth-card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px;
+  background: rgba(255,255,255,.04);
+  display: grid;
+  gap: 12px;
+}
+.split-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+@media(max-width: 860px) {
+  .auth-grid,
+  .split-title {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+}
+
+
+/* V11 dedicated login page */
+.auth-card h3 {
+  color: var(--gold-soft);
+}
+.split-title .btn {
+  white-space: nowrap;
+}
+
+
+/* V13: logged-in user details bar */
+.user-top-bar {
+  border-bottom: 1px solid rgba(246, 200, 79, .20);
+  background: linear-gradient(90deg, rgba(246, 200, 79, .13), rgba(255,255,255,.035), rgba(246, 200, 79, .09));
+  color: var(--text);
+  position: relative;
+  z-index: 20;
+}
+.user-top-inner {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: .88rem;
+}
+.user-top-left,
+.user-top-details,
+.user-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.user-top-left strong {
+  color: var(--gold-soft);
+}
+.user-top-left span:not(.user-dot),
+.user-top-details span {
+  color: var(--muted);
+}
+.user-top-details b {
+  color: var(--gold-soft);
+}
+.user-dot {
+  width: 9px;
+  height: 9px;
+  background: #68f2b1;
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(104, 242, 177, .8);
+}
+.user-top-actions a,
+.user-top-actions button {
+  border: 1px solid rgba(246, 200, 79, .35);
+  background: rgba(246, 200, 79, .08);
+  color: var(--gold-soft);
+  border-radius: 999px;
+  padding: 7px 12px;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+.user-top-actions button:hover,
+.user-top-actions a:hover {
+  background: rgba(246, 200, 79, .18);
+}
+
+/* V13: immediate access request status */
+.access-success-banner {
+  border: 1px solid rgba(83, 231, 166, .38);
+  background: rgba(83, 231, 166, .10);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: grid;
+  gap: 5px;
+}
+.access-success-banner strong {
+  color: #7bffc3;
+}
+.access-success-banner span {
+  color: var(--muted);
+}
+.ticket-copy-box {
+  border: 1px dashed rgba(246, 200, 79, .50);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  background: rgba(246, 200, 79, .08);
+}
+.ticket-copy-box span {
+  display: block;
+  color: var(--muted);
+  font-size: .78rem;
+  margin-bottom: 4px;
+}
+.ticket-copy-box strong {
+  color: var(--gold-soft);
+  word-break: break-all;
+}
+.auto-status-card {
+  margin-top: 12px;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(246, 200, 79, .35);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: rgba(246, 200, 79, .08);
+  color: var(--gold-soft);
+  font-size: .82rem;
+}
+.notice.soft {
+  background: rgba(246, 200, 79, .08);
+  border-color: rgba(246, 200, 79, .28);
+  color: var(--gold-soft);
+}
+
+@media(max-width: 900px) {
+  .user-top-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .user-top-details,
+  .user-top-actions {
+    width: 100%;
+  }
+}
+
+
+/* V14 logged-in cleanup */
+body.whalex-logged-in .nav-links a[href="login.html"] {
+  color: var(--gold-soft);
+}
+body.whalex-logged-in .logged-profile-link {
+  border-color: rgba(246, 200, 79, .38);
+}
+body.whalex-logged-in [data-hide-when-logged-in] {
+  display: none !important;
+}
+
+
+/* V15: logged-in user's own access requests */
+.my-request-list {
+  display: grid;
+  gap: 16px;
+}
+.empty-request-card {
+  border: 1px dashed rgba(246, 200, 79, .35);
+  background: rgba(246, 200, 79, .06);
+  border-radius: 22px;
+  padding: 22px;
+}
+.empty-request-card h3 {
+  color: var(--gold-soft);
+  margin-bottom: 8px;
+}
+.empty-request-card p {
+  color: var(--muted);
+}
+.logged-only-card {
+  border-color: rgba(246, 200, 79, .35);
+}
+
+
+/* V16: My Access layout cleanup */
+.my-access-shell .page-hero {
+  min-height: auto;
+  padding: 54px 0 46px;
+}
+.my-access-shell .page-hero h1 {
+  font-size: clamp(2.7rem, 6vw, 5.8rem);
+  line-height: .96;
+  max-width: 1040px;
+  letter-spacing: -.055em;
+}
+.my-access-shell .hero-subtitle {
+  max-width: 900px;
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+}
+.my-access-shell .user-card {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-access-shell .user-card h2 {
+  font-size: clamp(2rem, 4.1vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+.my-access-shell .form-grid label {
+  font-size: .93rem;
+}
+.my-access-shell .client-section {
+  padding-top: 34px;
+}
+.priority-access-card {
+  border-color: rgba(246, 200, 79, .48) !important;
+  background:
+    radial-gradient(circle at top left, rgba(246, 200, 79, .11), transparent 34%),
+    rgba(255,255,255,.045) !important;
+}
+.secondary-access-card {
+  opacity: .96;
+}
+.section-kicker {
+  display: inline-flex;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-weight: 900;
+  font-size: .72rem;
+  margin-bottom: 12px;
+}
+.my-request-list {
+  display: grid;
+  gap: 14px;
+}
+.my-request-list .ticket-status-card {
+  margin-top: 0;
+  background: rgba(0,0,0,.20);
+}
+.my-request-list .ticket-status-card h3 {
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: -.025em;
+}
+.my-request-list .ticket-status-card p {
+  font-size: .93rem;
+}
+.empty-request-card {
+  border: 1px dashed rgba(246, 200, 79, .35);
+  background: rgba(246, 200, 79, .06);
+  border-radius: 22px;
+  padding: 22px;
+}
+.empty-request-card h3 {
+  color: var(--gold-soft);
+  margin-bottom: 8px;
+}
+.empty-request-card p {
+  color: var(--muted);
+}
+
+/* V16: cleaner logged-in user strip; no heavy banner look */
+.user-top-bar {
+  border-bottom: 1px solid rgba(246, 200, 79, .16) !important;
+  background: rgba(0, 0, 0, .72) !important;
+  backdrop-filter: blur(10px);
+  padding: 8px 0;
+}
+.user-top-inner {
+  min-height: 42px !important;
+  border: 1px solid rgba(246, 200, 79, .22);
+  background: rgba(255, 255, 255, .035);
+  border-radius: 999px;
+  padding: 0 16px;
+}
+.user-top-left strong {
+  font-size: .92rem;
+}
+.user-top-left span:not(.user-dot),
+.user-top-details span {
+  font-size: .86rem;
+}
+.user-top-actions a,
+.user-top-actions button {
+  padding: 6px 11px !important;
+  font-size: .84rem !important;
+}
+.user-top-actions a:nth-child(2) {
+  display: none;
+}
+
+@media(max-width: 900px) {
+  .my-access-shell .page-hero {
+    padding: 42px 0 34px;
+  }
+  .my-access-shell .page-hero h1 {
+    font-size: clamp(2.35rem, 13vw, 4.2rem);
+  }
+  .user-top-inner {
+    border-radius: 18px;
+  }
+}
+
+
+/* ==========================================================
+   V17: Global layout and typography optimization
+   ========================================================== */
+
+:root {
+  --page-max: 1120px;
+  --card-max: 960px;
+  --compact-radius: 24px;
+}
+
+/* Header/nav scale */
+.site-header .nav,
+.nav {
+  min-height: 74px;
+}
+.brand-img {
+  max-width: 72px;
+  max-height: 72px;
+}
+.brand-text {
+  font-size: clamp(1.2rem, 2vw, 1.85rem);
+  letter-spacing: .08em;
+}
+.nav-links {
+  gap: clamp(12px, 1.6vw, 24px);
+}
+.nav-links a {
+  font-size: clamp(.86rem, 1vw, 1rem);
+}
+
+/* Inner page hero: practical, not poster-sized */
+.page-hero,
+.client-shell .page-hero,
+.admin-hero {
+  min-height: auto !important;
+  padding: clamp(42px, 7vw, 82px) 0 clamp(34px, 5vw, 62px) !important;
+}
+.page-hero h1,
+.client-shell .page-hero h1,
+.admin-hero h1 {
+  font-size: clamp(2.45rem, 5vw, 5.15rem) !important;
+  line-height: .98 !important;
+  letter-spacing: -.055em !important;
+  max-width: var(--page-max);
+}
+.page-hero .hero-subtitle,
+.client-shell .hero-subtitle,
+.admin-hero p {
+  max-width: 920px;
+  font-size: clamp(.98rem, 1.35vw, 1.22rem) !important;
+  line-height: 1.45;
+}
+.eyebrow {
+  font-size: .74rem !important;
+  letter-spacing: .22em !important;
+}
+
+/* Cards: reduce oversized panel feeling */
+.user-card,
+.admin-card,
+.narrow-page .user-card,
+.client-section .user-card {
+  max-width: var(--card-max) !important;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--compact-radius) !important;
+  padding: clamp(22px, 3vw, 38px) !important;
+}
+.user-card h2,
+.admin-card h2 {
+  font-size: clamp(1.85rem, 3.2vw, 3rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.04em !important;
+  margin-bottom: 18px;
+}
+.user-card h3,
+.admin-card h3 {
+  font-size: clamp(1.12rem, 1.7vw, 1.55rem) !important;
+}
+.microcopy,
+.user-card p,
+.admin-card p {
+  font-size: clamp(.92rem, 1vw, 1.02rem);
+  line-height: 1.45;
+}
+
+/* Forms */
+.form-grid {
+  gap: 16px !important;
+}
+.form-grid label,
+.auth-card label {
+  font-size: .88rem !important;
+}
+input,
+select,
+textarea {
+  min-height: 46px !important;
+  font-size: .94rem !important;
+  border-radius: 12px !important;
+}
+textarea {
+  min-height: 102px !important;
+}
+.btn,
+button.btn,
+.form-grid button,
+.auth-card button {
+  min-height: 46px !important;
+  padding: 12px 18px !important;
+  border-radius: 999px !important;
+  font-size: .92rem !important;
+}
+
+/* Logged-in user strip: compact */
+.user-top-bar {
+  padding: 6px 0 !important;
+  background: rgba(0, 0, 0, .72) !important;
+  backdrop-filter: blur(10px);
+}
+.user-top-inner {
+  min-height: 38px !important;
+  padding: 0 14px !important;
+  gap: 12px !important;
+  border-radius: 999px !important;
+}
+.user-top-left strong,
+.user-top-details span,
+.user-top-left span:not(.user-dot) {
+  font-size: .82rem !important;
+}
+.user-top-actions a,
+.user-top-actions button {
+  font-size: .78rem !important;
+  padding: 5px 10px !important;
+}
+
+/* My Access page */
+.page-my-access .client-section {
+  padding-top: 28px !important;
+}
+.page-my-access .page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.9rem) !important;
+}
+.page-my-access .priority-access-card {
+  margin-bottom: 24px;
+}
+.page-my-access .secondary-access-card {
+  margin-top: 0;
+}
+.my-request-list .ticket-status-card,
+.ticket-status-card {
+  border-radius: 18px !important;
+  padding: 18px !important;
+}
+.ticket-status-card h3 {
+  font-size: clamp(1.2rem, 2vw, 1.75rem) !important;
+}
+.ticket-status-card p {
+  font-size: .9rem !important;
+  margin: 7px 0;
+}
+.status-pill {
+  font-size: .78rem !important;
+  padding: 2px 9px !important;
+}
+
+/* Login/Profile page */
+.page-login .auth-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.page-login .auth-card {
+  padding: 18px !important;
+  border-radius: 18px !important;
+}
+.page-login .user-card {
+  max-width: 1000px !important;
+}
+.page-login .page-hero h1 {
+  font-size: clamp(2.45rem, 4.8vw, 4.75rem) !important;
+}
+
+/* Support page */
+.page-support .page-hero h1 {
+  font-size: clamp(2.35rem, 4.6vw, 4.65rem) !important;
+}
+.page-support .user-card {
+  max-width: 980px !important;
+}
+.page-support .form-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Admin page */
+.page-admin .admin-hero {
+  padding: 38px 0 44px !important;
+}
+.page-admin .admin-hero h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4.8rem) !important;
+}
+.page-admin .admin-card {
+  max-width: 1120px !important;
+}
+.page-admin .admin-card h2 {
+  font-size: clamp(1.75rem, 2.9vw, 2.8rem) !important;
+}
+.page-admin .admin-sidebar a,
+.page-admin .admin-tabs button,
+.page-admin input,
+.page-admin select,
+.page-admin textarea {
+  font-size: .9rem !important;
+}
+
+/* Other content pages */
+.page-products .page-hero h1,
+.page-results .page-hero h1,
+.page-videos .page-hero h1,
+.page-pricing .page-hero h1,
+.page-submit-result .page-hero h1 {
+  font-size: clamp(2.4rem, 4.8vw, 4.85rem) !important;
+}
+.page-products .page-hero,
+.page-results .page-hero,
+.page-videos .page-hero,
+.page-pricing .page-hero,
+.page-submit-result .page-hero {
+  padding-top: clamp(42px, 6vw, 76px) !important;
+}
+
+/* Footer */
+.compact-footer {
+  padding: 20px 0 !important;
+}
+.compact-footer-inner,
+.compact-footer a {
+  font-size: .9rem !important;
+}
+
+/* Mobile/tablet */
+@media(max-width: 900px) {
+  .nav {
+    min-height: 64px;
+  }
+  .page-hero,
+  .client-shell .page-hero,
+  .admin-hero {
+    padding: 34px 0 32px !important;
+  }
+  .page-hero h1,
+  .client-shell .page-hero h1,
+  .admin-hero h1 {
+    font-size: clamp(2.05rem, 11vw, 3.6rem) !important;
+  }
+  .user-card,
+  .admin-card {
+    padding: 20px !important;
+  }
+  .form-grid,
+  .page-login .auth-grid,
+  .page-support .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .user-top-inner {
+    border-radius: 18px !important;
+    align-items: flex-start !important;
+    padding: 10px 12px !important;
+  }
+  .user-top-details {
+    gap: 8px !important;
+  }
+}
+
+@media(max-width: 560px) {
+  .brand-img {
+    max-width: 54px;
+    max-height: 54px;
+  }
+  .brand-text {
+    font-size: 1.1rem;
+  }
+  .page-hero h1,
+  .client-shell .page-hero h1,
+  .admin-hero h1 {
+    font-size: clamp(2rem, 13vw, 3.2rem) !important;
+  }
+  .btn,
+  button.btn,
+  .form-grid button {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================================
+   V18: My Access priority + smaller practical typography
+   ========================================================== */
+
+.page-my-access .page-hero,
+.page-my-access .client-shell .page-hero,
+.my-access-shell .page-hero {
+  padding: 34px 0 30px !important;
+  min-height: auto !important;
+}
+.page-my-access .page-hero h1,
+.my-access-shell .page-hero h1 {
+  font-size: clamp(2.1rem, 4.1vw, 3.7rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+}
+.page-my-access .hero-subtitle,
+.my-access-shell .hero-subtitle,
+.my-access-subline {
+  display: none !important;
+}
+.page-my-access .hero-actions {
+  margin-top: 18px !important;
+}
+.page-my-access .client-section {
+  padding-top: 22px !important;
+}
+.page-my-access .narrow-page {
+  max-width: 980px !important;
+}
+.page-my-access .user-card {
+  max-width: 920px !important;
+  padding: 22px !important;
+  border-radius: 20px !important;
+}
+.page-my-access .user-card h2 {
+  font-size: clamp(1.55rem, 2.6vw, 2.35rem) !important;
+  margin-bottom: 10px !important;
+}
+.page-my-access .microcopy {
+  font-size: .92rem !important;
+}
+.page-my-access .split-title {
+  align-items: center !important;
+}
+.page-my-access #myAccessRequests {
+  order: 1 !important;
+  margin-bottom: 20px !important;
+}
+.page-my-access #access {
+  order: 2 !important;
+}
+.page-my-access #checkAccess {
+  order: 3 !important;
+}
+.page-my-access #trialFeedback {
+  order: 4 !important;
+}
+.page-my-access .narrow-page {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.section-kicker {
+  font-size: .68rem !important;
+  letter-spacing: .18em !important;
+}
+.access-request-card {
+  border: 1px solid rgba(246, 200, 79, .24);
+  background: rgba(0,0,0,.22);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+.request-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+.request-type {
+  color: var(--gold-soft);
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-weight: 900;
+}
+.request-card-head h3 {
+  margin: 5px 0 0 !important;
+  font-size: clamp(1.25rem, 2vw, 1.8rem) !important;
+}
+.request-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.request-detail-grid div {
+  border: 1px solid rgba(246, 200, 79, .16);
+  background: rgba(255,255,255,.035);
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-width: 0;
+}
+.request-detail-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: .72rem;
+  margin-bottom: 4px;
+}
+.request-detail-grid strong {
+  display: block;
+  color: var(--text);
+  font-size: .88rem;
+  word-break: break-word;
+}
+.compact-success {
+  margin-bottom: 0 !important;
+}
+.page-my-access input,
+.page-my-access select,
+.page-my-access textarea {
+  min-height: 42px !important;
+  font-size: .9rem !important;
+}
+.page-my-access textarea {
+  min-height: 82px !important;
+}
+.page-my-access .btn,
+.page-my-access button {
+  min-height: 42px !important;
+  font-size: .88rem !important;
+}
+.page-my-access .status-pill {
+  font-size: .72rem !important;
+  padding: 3px 8px !important;
+}
+.page-my-access .notice {
+  font-size: .88rem !important;
+}
+
+@media(max-width: 760px) {
+  .request-card-head {
+    flex-direction: column;
+  }
+  .request-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-my-access .page-hero h1,
+  .my-access-shell .page-hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+}
+
+
+/* ==========================================================
+   V20: Uniform page layout cleanup
+   ========================================================== */
+
+/* Remove extra hero sub-lines on functional pages */
+.page-subline-hidden,
+.page-my-access .hero-subtitle,
+.page-login .hero-subtitle,
+.page-support .hero-subtitle,
+.page-pricing .hero-subtitle,
+.page-admin .admin-hero p,
+.page-submit-result .hero-subtitle {
+  display: none !important;
+}
+
+/* Functional page hero: smaller, clean, consistent */
+.page-my-access .page-hero,
+.page-login .page-hero,
+.page-support .page-hero,
+.page-pricing .page-hero,
+.page-submit-result .page-hero,
+.page-admin .admin-hero {
+  min-height: auto !important;
+  padding: 30px 0 28px !important;
+}
+.page-my-access .page-hero h1,
+.page-login .page-hero h1,
+.page-support .page-hero h1,
+.page-pricing .page-hero h1,
+.page-submit-result .page-hero h1,
+.page-admin .admin-hero h1 {
+  font-size: clamp(2rem, 3.5vw, 3.35rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.035em !important;
+  max-width: 980px !important;
+}
+
+/* Uniform content/card width across user-facing functional pages */
+.page-my-access .narrow-page,
+.page-login .narrow-page,
+.page-support .narrow-page,
+.page-pricing .narrow-page,
+.page-submit-result .narrow-page,
+.page-admin .admin-container,
+.client-section .narrow-page {
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.page-my-access .user-card,
+.page-login .user-card,
+.page-support .user-card,
+.page-pricing .user-card,
+.page-submit-result .user-card,
+.page-admin .admin-card {
+  max-width: 980px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 22px !important;
+  border-radius: 20px !important;
+}
+
+.page-my-access .user-card h2,
+.page-login .user-card h2,
+.page-support .user-card h2,
+.page-pricing .user-card h2,
+.page-submit-result .user-card h2,
+.page-admin .admin-card h2 {
+  font-size: clamp(1.45rem, 2.25vw, 2.1rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 12px !important;
+  letter-spacing: -.025em !important;
+}
+
+/* Uniform form/table rhythm */
+.page-my-access .form-grid,
+.page-login .form-grid,
+.page-support .form-grid,
+.page-pricing .form-grid,
+.page-submit-result .form-grid,
+.page-admin .form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.page-my-access input,
+.page-login input,
+.page-support input,
+.page-pricing input,
+.page-submit-result input,
+.page-admin input,
+.page-my-access select,
+.page-login select,
+.page-support select,
+.page-pricing select,
+.page-submit-result select,
+.page-admin select,
+.page-my-access textarea,
+.page-login textarea,
+.page-support textarea,
+.page-pricing textarea,
+.page-submit-result textarea,
+.page-admin textarea {
+  min-height: 40px !important;
+  padding: 10px 13px !important;
+  font-size: .88rem !important;
+  border-radius: 11px !important;
+}
+
+.page-my-access textarea,
+.page-support textarea,
+.page-submit-result textarea,
+.page-admin textarea {
+  min-height: 78px !important;
+}
+
+.page-my-access .btn,
+.page-login .btn,
+.page-support .btn,
+.page-pricing .btn,
+.page-submit-result .btn,
+.page-admin .btn,
+.page-my-access button,
+.page-login button,
+.page-support button,
+.page-pricing button,
+.page-submit-result button,
+.page-admin button {
+  min-height: 40px !important;
+  padding: 10px 16px !important;
+  font-size: .86rem !important;
+}
+
+/* Uniform request/status cards */
+.access-request-card,
+.ticket-status-card,
+.empty-request-card,
+.notice {
+  font-size: .88rem !important;
+}
+.request-card-head h3 {
+  font-size: clamp(1.12rem, 1.7vw, 1.55rem) !important;
+}
+.request-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* Pricing/Buy page cleanup */
+.page-pricing .pricing-grid,
+.page-pricing .buy-grid,
+.page-pricing .price-layout {
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.page-pricing .price-card h2,
+.page-pricing .pricing-card h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem) !important;
+}
+.page-pricing .price {
+  font-size: clamp(2.1rem, 4vw, 3.2rem) !important;
+}
+
+/* Logged-in navigation cleanup: no Profile clutter in main nav or user bar */
+body.whalex-logged-in .nav-links a[href="login.html"],
+body.whalex-logged-in .logged-profile-link,
+body.whalex-logged-in .logged-hidden-login-link {
+  display: none !important;
+}
+.user-top-actions a[href="login.html"] {
+  display: none !important;
+}
+
+/* More compact user top strip */
+.user-top-bar {
+  padding: 4px 0 !important;
+}
+.user-top-inner {
+  min-height: 34px !important;
+  padding: 0 12px !important;
+}
+.user-top-left strong,
+.user-top-details span,
+.user-top-left span:not(.user-dot) {
+  font-size: .78rem !important;
+}
+
+/* Admin dashboard uniform table/card style */
+.page-admin table,
+.page-admin .table,
+.page-admin .admin-table {
+  font-size: .86rem !important;
+}
+.page-admin th,
+.page-admin td {
+  padding: 9px 10px !important;
+}
+
+/* Keep page content close to top after hero */
+.page-my-access .client-section,
+.page-login .client-section,
+.page-support .client-section,
+.page-pricing .client-section,
+.page-submit-result .client-section {
+  padding-top: 22px !important;
+}
+
+@media(max-width: 820px) {
+  .page-my-access .form-grid,
+  .page-login .form-grid,
+  .page-support .form-grid,
+  .page-pricing .form-grid,
+  .page-submit-result .form-grid,
+  .page-admin .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .request-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .page-my-access .page-hero h1,
+  .page-login .page-hero h1,
+  .page-support .page-hero h1,
+  .page-pricing .page-hero h1,
+  .page-submit-result .page-hero h1,
+  .page-admin .admin-hero h1 {
+    font-size: clamp(1.85rem, 8vw, 2.7rem) !important;
+  }
+}
+
+
+/* ==========================================================
+   V22: request rules, status colors, and no extra sub-lines
+   ========================================================== */
+
+.page-subline-hidden,
+.hero-subtitle.page-subline-hidden,
+.page-login .user-card > p,
+.page-my-access .user-card .microcopy:empty {
+  display: none !important;
+}
+
+/* Stronger compact form/card layout */
+.page-my-access .user-card,
+.page-login .user-card,
+.page-support .user-card,
+.page-pricing .user-card,
+.page-admin .admin-card {
+  padding: 20px !important;
+  border-radius: 18px !important;
+}
+
+.page-my-access .user-card h2,
+.page-login .user-card h2,
+.page-support .user-card h2,
+.page-pricing .user-card h2,
+.page-admin .admin-card h2 {
+  font-size: clamp(1.35rem, 2vw, 1.9rem) !important;
+}
+
+/* Status colors */
+.status-pill.status-orange,
+.status-orange {
+  border-color: rgba(255, 178, 66, .55) !important;
+  background: rgba(255, 178, 66, .16) !important;
+  color: #ffbf5f !important;
+}
+.status-pill.status-red,
+.status-red {
+  border-color: rgba(255, 92, 92, .55) !important;
+  background: rgba(255, 92, 92, .14) !important;
+  color: #ff7b7b !important;
+}
+.status-pill.status-green,
+.status-green {
+  border-color: rgba(90, 231, 155, .55) !important;
+  background: rgba(90, 231, 155, .14) !important;
+  color: #7bffc3 !important;
+}
+.status-neutral {
+  border-color: rgba(246, 200, 79, .28) !important;
+  background: rgba(246, 200, 79, .08) !important;
+  color: var(--gold-soft) !important;
+}
+.status-orange-text { color: #ffbf5f !important; }
+.status-red-text { color: #ff7b7b !important; }
+.status-green-text { color: #7bffc3 !important; }
+.status-neutral-text { color: var(--gold-soft) !important; }
+
+.access-request-card {
+  border-left: 4px solid rgba(255, 178, 66, .75);
+}
+.access-request-card:has(.status-green) {
+  border-left-color: rgba(90, 231, 155, .85);
+}
+.access-request-card:has(.status-red) {
+  border-left-color: rgba(255, 92, 92, .85);
+}
+
+/* Remove extra page vertical gaps */
+.page-login .client-section,
+.page-my-access .client-section,
+.page-support .client-section,
+.page-pricing .client-section {
+  padding-top: 18px !important;
+}
+
+.page-login .user-card + .user-card,
+.page-my-access .user-card + .user-card,
+.page-support .user-card + .user-card {
+  margin-top: 18px !important;
+}
+
+
+/* V23: Only 3 access-ticket statuses */
+.status-pill.status-orange,
+.status-orange {
+  border-color: rgba(255, 178, 66, .58) !important;
+  background: rgba(255, 178, 66, .16) !important;
+  color: #ffbf5f !important;
+}
+.status-pill.status-green,
+.status-green {
+  border-color: rgba(90, 231, 155, .58) !important;
+  background: rgba(90, 231, 155, .14) !important;
+  color: #7bffc3 !important;
+}
+.status-pill.status-red,
+.status-red {
+  border-color: rgba(255, 92, 92, .58) !important;
+  background: rgba(255, 92, 92, .14) !important;
+  color: #ff7b7b !important;
+}
+.status-orange-text { color: #ffbf5f !important; }
+.status-green-text { color: #7bffc3 !important; }
+.status-red-text { color: #ff7b7b !important; }
+
+
+/* ==========================================================
+   V24: Login page spacing and font-size fix
+   ========================================================== */
+
+/* Overall login page top spacing */
+.page-login .page-hero,
+.page-login .client-hero {
+  padding: 26px 0 18px !important;
+  min-height: auto !important;
+}
+
+.page-login .page-hero .container,
+.page-login .client-hero .container {
+  max-width: 980px !important;
+}
+
+.page-login .eyebrow {
+  font-size: .66rem !important;
+  letter-spacing: .18em !important;
+  margin-bottom: 8px !important;
+}
+
+.page-login .page-hero h1,
+.page-login .client-hero h1 {
+  font-size: clamp(1.9rem, 3.2vw, 3.15rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  margin: 0 !important;
+}
+
+.page-login .hero-subtitle,
+.page-login .page-subline-hidden {
+  display: none !important;
+}
+
+/* Container/card layout */
+.page-login .client-section {
+  padding-top: 14px !important;
+  padding-bottom: 36px !important;
+}
+
+.page-login .narrow-page {
+  max-width: 980px !important;
+}
+
+.page-login .user-card {
+  max-width: 980px !important;
+  padding: 20px !important;
+  border-radius: 18px !important;
+  margin-top: 0 !important;
+}
+
+/* Main login card title */
+.page-login .user-card > h2,
+.page-login .user-card h2 {
+  font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -.025em !important;
+  margin: 0 0 16px !important;
+}
+
+/* Existing user + new user two-column area */
+.page-login .auth-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+
+/* Both login/create cards */
+.page-login .auth-card,
+.page-login .login-card {
+  padding: 18px !important;
+  border-radius: 16px !important;
+  min-height: auto !important;
+}
+
+.page-login .auth-card h3,
+.page-login .login-card h3,
+.page-login .auth-card h2,
+.page-login .login-card h2 {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem) !important;
+  line-height: 1.15 !important;
+  margin: 0 0 14px !important;
+  letter-spacing: -.015em !important;
+}
+
+/* Form layout inside login page */
+.page-login form,
+.page-login .auth-card form,
+.page-login .login-card form {
+  display: grid !important;
+  gap: 12px !important;
+}
+
+/* Remove accidental big gaps between label and input */
+.page-login label {
+  display: grid !important;
+  gap: 6px !important;
+  font-size: .82rem !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  font-weight: 800 !important;
+}
+
+/* Inputs */
+.page-login input,
+.page-login select,
+.page-login textarea {
+  min-height: 40px !important;
+  height: 40px !important;
+  padding: 9px 12px !important;
+  font-size: .88rem !important;
+  border-radius: 10px !important;
+  line-height: 1.2 !important;
+}
+
+.page-login textarea {
+  height: auto !important;
+  min-height: 74px !important;
+}
+
+/* Button scale */
+.page-login .btn,
+.page-login button,
+.page-login input[type="submit"] {
+  min-height: 42px !important;
+  padding: 10px 16px !important;
+  font-size: .88rem !important;
+  border-radius: 999px !important;
+  width: 100%;
+}
+
+/* Reduce empty/notification area */
+.page-login .notice {
+  padding: 10px 12px !important;
+  font-size: .86rem !important;
+  border-radius: 12px !important;
+  margin-top: 12px !important;
+}
+
+.page-login #loginMsg,
+.page-login #registerMsg,
+.page-login #profileMsg,
+.page-login #loggedInBox {
+  margin-top: 10px !important;
+}
+
+/* Logged-in profile card */
+.page-login #loggedInBox,
+.page-login .profile-summary {
+  padding: 16px !important;
+  border-radius: 14px !important;
+}
+
+.page-login #loggedInBox h3,
+.page-login .profile-summary h3 {
+  font-size: 1.15rem !important;
+  margin-bottom: 10px !important;
+}
+
+.page-login #loggedInBox p,
+.page-login .profile-summary p {
+  font-size: .9rem !important;
+  margin: 7px 0 !important;
+}
+
+/* Saved User Details form */
+.page-login #profileSection,
+.page-login .profile-section {
+  margin-top: 16px !important;
+}
+
+/* Mobile */
+@media(max-width: 860px) {
+  .page-login .auth-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-login .page-hero,
+  .page-login .client-hero {
+    padding: 22px 0 14px !important;
+  }
+
+  .page-login .page-hero h1,
+  .page-login .client-hero h1 {
+    font-size: clamp(1.75rem, 8vw, 2.45rem) !important;
+  }
+
+  .page-login .user-card {
+    padding: 16px !important;
+  }
+
+  .page-login .auth-card,
+  .page-login .login-card {
+    padding: 15px !important;
+  }
+}
+
+/* Extra safety: if old CSS made first login inputs huge */
+.page-login .auth-card label:first-of-type,
+.page-login .login-card label:first-of-type {
+  margin-top: 0 !important;
+}
+
+.page-login .auth-card input,
+.page-login .login-card input {
+  max-height: 42px !important;
+}
+
+
+/* V25: one open request rule */
+.duplicate-cleanup-note {
+  margin-top: 12px !important;
+  border-color: rgba(255, 178, 66, .40) !important;
+  background: rgba(255, 178, 66, .10) !important;
+  color: #ffbf5f !important;
+}
+#accessTicketMsg .notice.error {
+  border-color: rgba(255, 178, 66, .55) !important;
+  background: rgba(255, 178, 66, .14) !important;
+  color: #ffbf5f !important;
+}
+
+
+/* ==========================================================
+   V26: Login redirect and cleanup
+   ========================================================== */
+
+/* Login page should only be for non-logged-in users */
+.page-login #loggedInBox,
+.page-login #profileSection,
+.page-login .profile-section,
+.page-login .profile-summary,
+.page-login #logoutBtn {
+  display: none !important;
+}
+
+body.whalex-logged-in .nav-links a[href="login.html"] {
+  display: none !important;
+}
+
+/* Final login sizing cleanup */
+.page-login .page-hero,
+.page-login .client-hero {
+  padding: 24px 0 14px !important;
+}
+
+.page-login .page-hero h1,
+.page-login .client-hero h1 {
+  font-size: clamp(1.85rem, 3vw, 2.9rem) !important;
+}
+
+.page-login .client-section {
+  padding-top: 12px !important;
+}
+
+.page-login .user-card {
+  padding: 18px !important;
+  max-width: 980px !important;
+}
+
+.page-login .auth-grid {
+  gap: 16px !important;
+}
+
+.page-login .auth-card {
+  padding: 16px !important;
+  min-height: auto !important;
+}
+
+.page-login .auth-card h2,
+.page-login .auth-card h3 {
+  font-size: clamp(1.05rem, 1.45vw, 1.28rem) !important;
+  margin-bottom: 12px !important;
+}
+
+.page-login label {
+  gap: 5px !important;
+  font-size: .8rem !important;
+}
+
+.page-login input,
+.page-login select {
+  height: 38px !important;
+  min-height: 38px !important;
+}
+
+.page-login button,
+.page-login .btn {
+  min-height: 40px !important;
+}
+
+
+/* ==========================================================
+   V27: Meaningful sub-lines only
+   ========================================================== */
+
+/* Generic/empty hero sub-lines hidden on functional pages */
+.page-subline-hidden,
+.hero-subtitle.page-subline-hidden,
+.page-login .hero-subtitle,
+.page-my-access .hero-subtitle,
+.page-pricing .hero-subtitle,
+.page-support .hero-subtitle {
+  display: none !important;
+}
+
+/* Keep useful microcopy compact and intentional */
+.microcopy {
+  color: rgba(255, 248, 230, .72) !important;
+  font-size: .88rem !important;
+  line-height: 1.4 !important;
+  margin-top: 6px !important;
+}
+
+/* Do not show empty helper lines */
+.microcopy:empty,
+p:empty {
+  display: none !important;
+}
+
+/* Clean duplicate/open request message */
+.duplicate-cleanup-note {
+  margin-top: 12px !important;
+  border-color: rgba(255, 178, 66, .44) !important;
+  background: rgba(255, 178, 66, .12) !important;
+  color: #ffbf5f !important;
+  font-weight: 700 !important;
+}
+
+/* Pricing page: keep plan/product content useful and readable */
+.page-pricing .price-card p,
+.page-pricing .pricing-card p,
+.page-pricing .plan-card p {
+  display: block;
+  color: rgba(255, 248, 230, .78);
+}
+
+/* Login page: no generic text blocks above forms */
+.page-login .user-card > p,
+.page-login .auth-card > p {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V28: Auth-gated buy/access flow
+   ========================================================== */
+
+body.whalex-logged-out #whalexUserBar,
+body.whalex-logged-out [data-hide-logged-out] {
+  display: none !important;
+}
+
+/* If user.html flashes before redirect, do not expose forms/details to logged-out users */
+body.whalex-logged-out.page-my-access main[data-protected-page="true"],
+body:not(.whalex-logged-in).page-my-access main[data-protected-page="true"] {
+  visibility: hidden;
+}
+
+/* Pricing page keeps plan details only; generic hero subline hidden */
+.page-pricing .hero-subtitle.page-subline-hidden {
+  display: none !important;
+}
+
+/* Protected action visual */
+.requires-login {
+  cursor: pointer;
+}
+
+
+/* ==========================================================
+   V29: Buy page sub-line cleanup
+   ========================================================== */
+
+/* Hide generic page explanation on Buy Access */
+.page-pricing .hero-subtitle,
+.page-pricing .page-subline-hidden,
+.page-pricing .buy-copy,
+.page-pricing .pricing-helper-text {
+  display: none !important;
+}
+
+/* Keep useful product/plan subline only */
+.page-pricing .plan-subline {
+  display: block !important;
+  margin: 8px 0 18px !important;
+  color: rgba(255, 248, 230, .74) !important;
+  font-size: .95rem !important;
+  line-height: 1.35 !important;
+}
+
+/* Clean backup UPI card if its paragraph is empty */
+.page-pricing p:empty {
+  display: none !important;
+}
+
+/* Buy page left column should not look text-heavy */
+.page-pricing .hero-copy p:not(.plan-subline),
+.page-pricing .pricing-hero p:not(.plan-subline) {
+  display: none !important;
+}
+
+/* Better spacing after removing old paragraph */
+.page-pricing .hero-actions,
+.page-pricing .pricing-actions {
+  margin-top: 18px !important;
+}
+
+
+/* ==========================================================
+   V30: Access tracker dropdown first
+   ========================================================== */
+
+.page-my-access .narrow-page {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.page-my-access #accessTracker {
+  order: 1 !important;
+}
+
+.page-my-access #myAccessRequests {
+  order: 2 !important;
+}
+
+.page-my-access #access {
+  order: 3 !important;
+}
+
+.page-my-access #trialFeedback {
+  order: 4 !important;
+}
+
+.access-tracker-card {
+  border-color: rgba(246, 200, 79, .42) !important;
+}
+
+.access-tracker-card .compact-form {
+  grid-template-columns: minmax(0, 1fr) 220px !important;
+  align-items: end !important;
+}
+
+#accessRequestSelect {
+  width: 100%;
+}
+
+#accessStatusBox {
+  margin-top: 14px;
+}
+
+/* Tracker does not need email field */
+#checkAccess,
+#checkAccessForm {
+  display: none !important;
+}
+
+@media(max-width: 760px) {
+  .access-tracker-card .compact-form {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ==========================================================
+   V32: Remove unnecessary manual refresh buttons
+   ========================================================== */
+
+.page-my-access .split-title.no-action {
+  display: block !important;
+}
+
+.page-my-access #accessTracker .split-title,
+.page-my-access #myAccessRequests .split-title {
+  margin-bottom: 14px !important;
+}
+
+.page-my-access #accessTracker button#refreshTrackerBtn,
+.page-my-access #myAccessRequests button#refreshMyRequestsBtn {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V33: Admin access cleanup, auto dates, notifications
+   ========================================================== */
+
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+.admin-summary-grid p {
+  border: 1px solid rgba(246, 200, 79, .18);
+  border-radius: 12px;
+  padding: 9px 10px;
+  margin: 0 !important;
+  background: rgba(255,255,255,.035);
+  word-break: break-word;
+}
+.compact-admin-ticket-form {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.status.open,
+.status.status-orange {
+  color: #ffbf5f !important;
+  border-color: rgba(255, 178, 66, .55) !important;
+  background: rgba(255, 178, 66, .15) !important;
+}
+.status.done {
+  color: #7bffc3 !important;
+  border-color: rgba(90, 231, 155, .55) !important;
+  background: rgba(90, 231, 155, .14) !important;
+}
+.status.rejected {
+  color: #ff7b7b !important;
+  border-color: rgba(255, 92, 92, .55) !important;
+  background: rgba(255, 92, 92, .14) !important;
+}
+#userNotifications {
+  order: 2 !important;
+}
+.page-my-access #myAccessRequests {
+  order: 3 !important;
+}
+.page-my-access #access {
+  order: 4 !important;
+}
+.page-my-access #trialFeedback {
+  order: 5 !important;
+}
+@media(max-width: 760px) {
+  .admin-summary-grid,
+  .compact-admin-ticket-form {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ==========================================================
+   V34: Deterministic access end date admin UI
+   ========================================================== */
+
+.access-admin-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.duration-pill {
+  border: 1px solid rgba(246, 200, 79, .35);
+  background: rgba(246, 200, 79, .10);
+  color: #f7dd93;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+.admin-summary-grid p {
+  border: 1px solid rgba(246, 200, 79, .18);
+  border-radius: 12px;
+  padding: 9px 10px;
+  margin: 0 !important;
+  background: rgba(255,255,255,.035);
+  word-break: break-word;
+}
+.compact-admin-ticket-form {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.readonly-date {
+  opacity: .92;
+  background: rgba(255,255,255,.05) !important;
+}
+.status.open {
+  color: #ffbf5f !important;
+  border-color: rgba(255, 178, 66, .55) !important;
+  background: rgba(255, 178, 66, .15) !important;
+}
+.status.done {
+  color: #7bffc3 !important;
+  border-color: rgba(90, 231, 155, .55) !important;
+  background: rgba(90, 231, 155, .14) !important;
+}
+.status.rejected {
+  color: #ff7b7b !important;
+  border-color: rgba(255, 92, 92, .55) !important;
+  background: rgba(255, 92, 92, .14) !important;
+}
+@media(max-width: 760px) {
+  .access-admin-head,
+  .admin-summary-grid,
+  .compact-admin-ticket-form {
+    display: block !important;
+  }
+  .duration-pill {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+
+
+/* ==========================================================
+   V35: Live access End Date autofill
+   ========================================================== */
+.date-auto-hint {
+  border: 1px solid rgba(246, 200, 79, .28);
+  background: rgba(246, 200, 79, .09);
+  color: #f7dd93;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .82rem;
+  font-weight: 800;
+}
+.readonly-date {
+  cursor: not-allowed;
+}
+
+
+/* ==========================================================
+   V36: Manual UPI QR / barcode
+   ========================================================== */
+
+.upi-qr-box {
+  margin: 16px 0 18px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(246, 200, 79, .26);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .045);
+}
+
+.upi-qr-box img {
+  width: min(220px, 100%);
+  aspect-ratio: 1 / 1;
+  display: block;
+  border-radius: 14px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.28);
+}
+
+.upi-qr-box span {
+  color: rgba(255, 248, 230, .78);
+  font-size: .88rem;
+  font-weight: 800;
+}
+
+.page-pricing .upi-screen-card .upi-box {
+  margin-bottom: 12px;
+}
+
+.access-admin-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.duration-pill {
+  border: 1px solid rgba(246, 200, 79, .35);
+  background: rgba(246, 200, 79, .10);
+  color: #f7dd93;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.admin-summary-grid p {
+  border: 1px solid rgba(246, 200, 79, .18);
+  border-radius: 12px;
+  padding: 9px 10px;
+  margin: 0 !important;
+  background: rgba(255,255,255,.035);
+  word-break: break-word;
+}
+
+.compact-admin-ticket-form {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.date-auto-hint {
+  border: 1px solid rgba(246, 200, 79, .28);
+  background: rgba(246, 200, 79, .09);
+  color: #f7dd93;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.readonly-date {
+  cursor: not-allowed;
+  opacity: .92;
+  background: rgba(255,255,255,.05) !important;
+}
+
+.status.open {
+  color: #ffbf5f !important;
+  border-color: rgba(255, 178, 66, .55) !important;
+  background: rgba(255, 178, 66, .15) !important;
+}
+.status.done, .status.approved {
+  color: #7bffc3 !important;
+  border-color: rgba(90, 231, 155, .55) !important;
+  background: rgba(90, 231, 155, .14) !important;
+}
+.status.rejected {
+  color: #ff7b7b !important;
+  border-color: rgba(255, 92, 92, .55) !important;
+  background: rgba(255, 92, 92, .14) !important;
+}
+
+@media(max-width: 760px) {
+  .access-admin-head {
+    display: block;
+  }
+  .duration-pill {
+    display: inline-block;
+    margin-top: 8px;
+  }
+  .admin-summary-grid,
+  .compact-admin-ticket-form {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ==========================================================
+   V37: Admin notification visibility
+   ========================================================== */
+
+.notification-admin-card {
+  border-left: 4px solid rgba(246, 200, 79, .75);
+}
+
+.notification-admin-card .notice.error {
+  margin-top: 10px;
+  border-color: rgba(255, 92, 92, .45);
+  background: rgba(255, 92, 92, .12);
+  color: #ffb1b1;
+}
+
+
+/* ==========================================================
+   V38: Admin ticket visibility and counts
+   ========================================================== */
+
+.admin-counts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-count-pill {
+  border: 1px solid rgba(246, 200, 79, .22);
+  background: rgba(255,255,255,.045);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.admin-count-pill strong {
+  display: block;
+  color: #f7dd93;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.admin-count-pill span {
+  display: block;
+  color: rgba(255,248,230,.72);
+  font-size: .85rem;
+  margin-top: 7px;
+}
+
+@media(max-width: 800px) {
+  .admin-counts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ==========================================================
+   V40: Access Inbox fallback visibility
+   ========================================================== */
+
+.access-admin-card .notice.error {
+  border-color: rgba(255, 92, 92, .45);
+  background: rgba(255, 92, 92, .12);
+  color: #ffb1b1;
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================================
+   V42: Login layout cleanup + forgot password
+   ========================================================== */
+
+.page-login-v42 .login-clean-hero {
+  padding: 28px 0 22px !important;
+  min-height: 0 !important;
+}
+
+.page-login-v42 .login-clean-hero .container {
+  max-width: 980px !important;
+}
+
+.page-login-v42 .login-clean-hero h1 {
+  font-size: clamp(2rem, 3.3vw, 3.25rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.04em !important;
+  margin: 0 !important;
+}
+
+.page-login-v42 .login-clean-section {
+  padding-top: 14px !important;
+  padding-bottom: 42px !important;
+}
+
+.page-login-v42 .narrow-page {
+  max-width: 980px !important;
+}
+
+.page-login-v42 .login-clean-card {
+  padding: 20px !important;
+  border-radius: 20px !important;
+  max-width: 980px !important;
+}
+
+.page-login-v42 .login-clean-title h2,
+.page-login-v42 .login-clean-card > h2 {
+  font-size: clamp(1.45rem, 2.15vw, 2rem) !important;
+  line-height: 1.1 !important;
+  margin: 0 0 16px !important;
+}
+
+.page-login-v42 .login-clean-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+  gap: 18px !important;
+  align-items: start !important;
+}
+
+.page-login-v42 .auth-card {
+  padding: 18px !important;
+  border-radius: 16px !important;
+  min-height: 0 !important;
+  display: grid !important;
+  gap: 12px !important;
+  align-content: start !important;
+}
+
+.page-login-v42 .login-auth-card {
+  min-height: 300px !important;
+}
+
+.page-login-v42 .register-auth-card {
+  min-height: 0 !important;
+}
+
+.page-login-v42 .auth-card h3 {
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem) !important;
+  line-height: 1.15 !important;
+  margin: 0 0 6px !important;
+  color: var(--gold-soft) !important;
+}
+
+.page-login-v42 label {
+  display: grid !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  font-size: .8rem !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  color: rgba(255, 248, 230, .70) !important;
+}
+
+.page-login-v42 input,
+.page-login-v42 select,
+.page-login-v42 textarea {
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 9px 12px !important;
+  border-radius: 10px !important;
+  font-size: .88rem !important;
+  width: 100% !important;
+}
+
+.page-login-v42 .login-submit-btn,
+.page-login-v42 .register-submit-btn,
+.page-login-v42 .forgot-submit-btn {
+  width: 100% !important;
+  min-height: 42px !important;
+  height: 42px !important;
+  padding: 9px 14px !important;
+  border-radius: 999px !important;
+  font-size: .88rem !important;
+  margin-top: 2px !important;
+}
+
+.page-login-v42 .login-auth-card .login-submit-btn {
+  margin-top: 4px !important;
+}
+
+.page-login-v42 .login-row-between {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  min-height: 20px !important;
+  margin-top: -2px !important;
+}
+
+.page-login-v42 .text-link-button {
+  width: auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--gold-soft) !important;
+  font-size: .82rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.page-login-v42 .text-link-button:hover {
+  text-decoration: underline !important;
+}
+
+.page-login-v42 .forgot-password-card {
+  max-width: 560px !important;
+  margin-top: 4px !important;
+}
+
+.page-login-v42 .small-title {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+}
+
+.page-login-v42 .small-title h3 {
+  margin: 0 0 4px !important;
+}
+
+.page-login-v42 .small-title .microcopy {
+  margin: 0 !important;
+  font-size: .86rem !important;
+  line-height: 1.45 !important;
+}
+
+.page-login-v42 .tiny-btn {
+  width: auto !important;
+  min-height: 34px !important;
+  height: 34px !important;
+  padding: 7px 14px !important;
+  font-size: .8rem !important;
+  white-space: nowrap !important;
+}
+
+.page-login-v42 .notice {
+  margin-top: 4px !important;
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+  font-size: .84rem !important;
+  line-height: 1.45 !important;
+}
+
+.page-reset-password .reset-narrow {
+  max-width: 620px !important;
+}
+
+.page-reset-password .reset-card {
+  max-width: 620px !important;
+}
+
+.page-reset-password .reset-actions {
+  margin-top: 14px !important;
+}
+
+@media(max-width: 840px) {
+  .page-login-v42 .login-clean-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-login-v42 .login-auth-card {
+    min-height: 0 !important;
+  }
+}
+
+
+/* ==========================================================
+   V43: Forgot password modal + login polish
+   ========================================================== */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.page-login-v42 .login-clean-card {
+  overflow: visible !important;
+}
+
+.page-login-v42 .login-clean-grid {
+  align-items: stretch !important;
+}
+
+.page-login-v42 .auth-card {
+  height: 100% !important;
+}
+
+.page-login-v42 .login-auth-card,
+.page-login-v42 .register-auth-card {
+  min-height: 0 !important;
+}
+
+.page-login-v42 .login-auth-card {
+  align-content: start !important;
+}
+
+.page-login-v42 .login-submit-btn {
+  max-width: 100% !important;
+}
+
+.page-login-v42 .forgot-link {
+  color: #f7dd93 !important;
+  letter-spacing: .01em !important;
+}
+
+.whalex-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.whalex-modal.is-open {
+  display: flex;
+}
+
+.whalex-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(217, 164, 65, .16), transparent 32%),
+    rgba(0, 0, 0, .74);
+  backdrop-filter: blur(10px);
+}
+
+.whalex-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(480px, 94vw);
+  border: 1px solid rgba(246, 200, 79, .28);
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(42, 40, 34, .98), rgba(20, 20, 18, .98));
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, .56),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  padding: 28px;
+  color: var(--cream);
+  animation: whalexModalIn .18s ease-out;
+}
+
+@keyframes whalexModalIn {
+  from {
+    transform: translateY(12px) scale(.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(246, 200, 79, .30) !important;
+  background: rgba(255, 255, 255, .045) !important;
+  color: #f7dd93 !important;
+  font-size: 1.7rem !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
+  padding: 0 !important;
+}
+
+.modal-close-x:hover {
+  transform: rotate(90deg);
+  background: rgba(246, 200, 79, .14) !important;
+  border-color: rgba(246, 200, 79, .60) !important;
+}
+
+.modal-icon-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(246, 200, 79, .32);
+  background: rgba(246, 200, 79, .12);
+  color: #f7dd93;
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.whalex-modal-card h2 {
+  margin: 0 42px 8px 0 !important;
+  font-size: clamp(1.65rem, 3vw, 2.15rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.035em !important;
+  color: var(--cream) !important;
+}
+
+.modal-copy {
+  margin: 0 0 20px !important;
+  color: rgba(255, 248, 230, .72) !important;
+  font-size: .95rem !important;
+  line-height: 1.55 !important;
+}
+
+.forgot-modal-form {
+  display: grid;
+  gap: 14px;
+}
+
+.forgot-modal-form label {
+  display: grid !important;
+  gap: 7px !important;
+  margin: 0 !important;
+  font-size: .82rem !important;
+  font-weight: 900 !important;
+  color: rgba(255, 248, 230, .74) !important;
+}
+
+.forgot-modal-form input {
+  height: 44px !important;
+  min-height: 44px !important;
+  border-radius: 12px !important;
+  padding: 10px 13px !important;
+  font-size: .92rem !important;
+}
+
+.forgot-modal-form .forgot-submit-btn {
+  height: 44px !important;
+  min-height: 44px !important;
+  border-radius: 999px !important;
+  margin-top: 2px !important;
+  font-size: .9rem !important;
+  width: 100% !important;
+}
+
+.forgot-modal-form .notice {
+  margin-top: 0 !important;
+}
+
+@media(max-width: 640px) {
+  .whalex-modal {
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .whalex-modal-card {
+    width: 100%;
+    border-radius: 22px;
+    padding: 24px 18px 20px;
+  }
+
+  .modal-close-x {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+
+/* ==========================================================
+   V44: Live sync + notification bell for user and admin
+   ========================================================== */
+
+.notif-host {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.notif-bell-btn {
+  position: relative;
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(246, 200, 79, .35) !important;
+  background: rgba(246, 200, 79, .08) !important;
+  color: #f7dd93 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+}
+
+.notif-bell-btn:hover {
+  background: rgba(246, 200, 79, .16) !important;
+  border-color: rgba(246, 200, 79, .70) !important;
+}
+
+.bell-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.notif-count {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ff5d5d;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: .66rem;
+  font-weight: 900;
+  border: 1px solid rgba(0,0,0,.55);
+}
+
+.notif-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(360px, 92vw);
+  max-height: 460px;
+  overflow: hidden;
+  display: none;
+  border: 1px solid rgba(246, 200, 79, .28);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(33, 31, 27, .98), rgba(12, 12, 11, .98));
+  box-shadow: 0 24px 70px rgba(0,0,0,.52);
+  color: var(--cream);
+}
+
+.notif-host.open .notif-panel {
+  display: block;
+}
+
+.notif-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(246, 200, 79, .18);
+}
+
+.notif-panel-head strong {
+  font-size: .92rem;
+  color: #f7dd93;
+}
+
+.notif-panel-head button {
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255,248,230,.70) !important;
+  font-size: .75rem !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+.notif-panel-head button:hover {
+  color: #f7dd93 !important;
+  text-decoration: underline;
+}
+
+.notif-list {
+  max-height: 390px;
+  overflow-y: auto;
+}
+
+.notif-item {
+  width: 100% !important;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 10px 1fr !important;
+  gap: 10px !important;
+  padding: 12px 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(246, 200, 79, .11) !important;
+  background: transparent !important;
+  color: var(--cream) !important;
+  text-align: left !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+}
+
+.notif-item:hover {
+  background: rgba(246, 200, 79, .08) !important;
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-top: 5px;
+  background: transparent;
+  border: 1px solid rgba(246, 200, 79, .30);
+}
+
+.notif-item.is-unread .notif-dot {
+  background: #f7c64a;
+  border-color: #f7c64a;
+  box-shadow: 0 0 0 4px rgba(247,198,74,.10);
+}
+
+.notif-item strong {
+  display: block;
+  color: #fff7df;
+  font-size: .84rem;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.notif-item small {
+  display: block;
+  color: rgba(255,248,230,.70);
+  font-size: .75rem;
+  line-height: 1.35;
+}
+
+.notif-item em {
+  display: block;
+  color: rgba(255,248,230,.45);
+  font-size: .68rem;
+  line-height: 1.2;
+  margin-top: 6px;
+  font-style: normal;
+}
+
+.notif-empty {
+  padding: 18px 14px;
+  color: rgba(255,248,230,.65);
+  font-size: .86rem;
+}
+
+.user-top-actions .notif-host {
+  margin-right: 2px;
+}
+
+.admin-notif-host {
+  margin-right: 8px;
+}
+
+.notification-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.notification-admin-card.is-unread {
+  border-left: 4px solid rgba(246, 200, 79, .95);
+  background: rgba(246, 200, 79, .045);
+}
+
+.mini-action-btn {
+  width: auto !important;
+  min-height: 32px !important;
+  height: 32px !important;
+  padding: 6px 12px !important;
+  font-size: .76rem !important;
+  white-space: nowrap;
+}
+
+.live-sync-pill {
+  border: 1px solid rgba(90, 231, 155, .30);
+  background: rgba(90, 231, 155, .08);
+  color: #9fffd1;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: .78rem;
+  font-weight: 900;
+  margin: 8px 0;
+}
+
+.product-empty {
+  padding: 28px;
+  color: rgba(255,248,230,.75);
+}
+
+@media(max-width: 760px) {
+  .notif-panel {
+    right: -90px;
+    width: min(330px, 94vw);
+  }
+
+  .admin-notif-host .notif-panel {
+    right: 0;
+  }
+
+  .user-top-actions {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ==========================================================
+   V45: Clickable notification navigation
+   ========================================================== */
+
+.notif-item {
+  position: relative;
+}
+
+.notif-item::after {
+  content: "›";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(246, 200, 79, .55);
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.notif-item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(2px);
+}
+
+.notif-item > span:last-child {
+  padding-right: 16px;
+}
+
+
+/* ==========================================================
+   V46: Notification bell alignment fix
+   ========================================================== */
+
+/* Keep user info row, bell, and logout vertically centered */
+.user-top-inner,
+.user-top-left,
+.user-top-details,
+.user-top-actions {
+  align-items: center !important;
+}
+
+.user-top-actions {
+  display: flex !important;
+  gap: 10px !important;
+  min-height: 40px !important;
+}
+
+/* Bell should match normal pill/button alignment */
+.user-top-actions .notif-host,
+.admin-notif-host {
+  height: 36px !important;
+  min-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+.user-top-actions .notif-bell-btn,
+.admin-notif-host .notif-bell-btn {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  line-height: 1 !important;
+  transform: none !important;
+}
+
+.user-top-actions .bell-icon,
+.admin-notif-host .bell-icon {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  transform: translateY(0) !important;
+}
+
+/* Logout and My Access pills use the same visual center as bell */
+.user-top-actions a,
+.user-top-actions button {
+  min-height: 36px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+/* Badge should not push bell out of center */
+.user-top-actions .notif-count,
+.admin-notif-host .notif-count {
+  top: -6px !important;
+  right: -6px !important;
+  line-height: 18px !important;
+}
+
+/* Dropdown starts under the centered bell */
+.user-top-actions .notif-panel {
+  top: calc(100% + 8px) !important;
+}
+
+/* Admin header bell alignment next to header links */
+.page-admin .nav-links.static {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+}
+
+.page-admin .nav-links.static .admin-notif-host {
+  order: -1;
+}
+
+
+/* ==========================================================
+   V47: Admin-to-user indicator live sync marker
+   ========================================================== */
+
+.live-data-marker {
+  margin-top: 14px;
+  color: rgba(159, 255, 209, .82);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+.page-live-marker {
+  margin: 10px 0 14px;
+  border: 1px solid rgba(90, 231, 155, .28);
+  background: rgba(90, 231, 155, .07);
+  border-radius: 999px;
+  padding: 8px 12px;
+  display: inline-flex;
+  width: auto;
+}
+
+.tab-buttons button {
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   V48: Standard success/error toast messages
+   ========================================================== */
+
+.whalex-toast-container {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 12000;
+  display: grid;
+  gap: 12px;
+  width: min(390px, calc(100vw - 28px));
+  pointer-events: none;
+}
+
+.whalex-toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 34px 1fr 28px;
+  align-items: start;
+  gap: 12px;
+  border: 1px solid rgba(246, 200, 79, .28);
+  background:
+    linear-gradient(145deg, rgba(34, 32, 27, .98), rgba(13, 13, 12, .98));
+  color: #fff8e6;
+  border-radius: 18px;
+  padding: 14px 13px;
+  box-shadow: 0 22px 70px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.06);
+  animation: whalexToastIn .18s ease-out;
+  overflow: hidden;
+  position: relative;
+}
+
+.whalex-toast::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: #f3c84f;
+}
+
+.whalex-toast.success::before { background: #55e69d; }
+.whalex-toast.error::before { background: #ff6868; }
+.whalex-toast.warning::before { background: #f3c84f; }
+.whalex-toast.info::before { background: #70b7ff; }
+
+.toast-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 1000;
+  color: #07140d;
+  background: #55e69d;
+  line-height: 1;
+}
+
+.whalex-toast.error .toast-icon {
+  background: #ff6868;
+  color: #240000;
+}
+
+.whalex-toast.warning .toast-icon {
+  background: #f3c84f;
+  color: #221900;
+}
+
+.whalex-toast.info .toast-icon {
+  background: #70b7ff;
+  color: #001526;
+}
+
+.toast-content {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.toast-content strong {
+  color: #fff8e6;
+  font-size: .94rem;
+  line-height: 1.25;
+}
+
+.toast-content span {
+  color: rgba(255,248,230,.74);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.toast-close {
+  width: 28px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(246, 200, 79, .22) !important;
+  background: rgba(255,255,255,.045) !important;
+  color: rgba(255,248,230,.72) !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  font-size: 1.1rem !important;
+  line-height: 1 !important;
+}
+
+.toast-close:hover {
+  color: #fff8e6 !important;
+  border-color: rgba(246, 200, 79, .55) !important;
+}
+
+.whalex-toast.is-leaving {
+  animation: whalexToastOut .18s ease-in forwards;
+}
+
+@keyframes whalexToastIn {
+  from { opacity: 0; transform: translateY(-8px) translateX(8px); }
+  to { opacity: 1; transform: translateY(0) translateX(0); }
+}
+
+@keyframes whalexToastOut {
+  from { opacity: 1; transform: translateY(0) translateX(0); }
+  to { opacity: 0; transform: translateY(-6px) translateX(10px); }
+}
+
+@media(max-width: 640px) {
+  .whalex-toast-container {
+    top: 12px;
+    right: 14px;
+    left: 14px;
+    width: auto;
+  }
+}
+
+
+/* ==========================================================
+   V49: Remove visible live-sync/debug marker from user portal
+   ========================================================== */
+
+#publicProductVersion,
+.page-live-marker {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V50: Home page indicator cards now sync from Admin Product data
+   ========================================================== */
+
+.home-shell .three-feature-screen h3 {
+  word-break: break-word;
+}
+
+.home-shell .three-feature-screen p {
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   V51: Home live indicator cards are rendered from Admin data
+   ========================================================== */
+
+.live-product-grid[data-live-rendered="true"] .live-home-product-card,
+.three-feature-screen[data-live-rendered="true"] .live-home-product-card {
+  min-width: 0;
+}
+
+.live-home-product-card h3,
+.live-home-product-card p {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.live-home-product-card p {
+  display: block;
+}
+
+
+/* ==========================================================
+   V52: Pricing UPI copy cleanup
+   ========================================================== */
+
+.upi-screen-card .upi-helper-text {
+  color: rgba(255,248,230,.72);
+  font-size: .95rem;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.upi-screen-card .badge.muted {
+  color: #dcfff3;
+}
+
+
+/* ==========================================================
+   V53: Evidence screenshot preview + download
+   ========================================================== */
+
+.evidence-panel,
+.user-evidence-panel {
+  margin: 16px 0;
+  border: 1px solid rgba(246, 200, 79, .26);
+  background: rgba(18, 18, 15, .34);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.evidence-panel.missing {
+  border-color: rgba(255, 104, 104, .35);
+  background: rgba(255, 104, 104, .06);
+}
+
+.evidence-panel.missing strong {
+  color: #ffb0b0;
+}
+
+.evidence-panel.missing p {
+  margin: 5px 0 0;
+  color: rgba(255, 248, 230, .68);
+  font-size: .88rem;
+}
+
+.evidence-head,
+.user-evidence-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.evidence-head strong,
+.user-evidence-head strong {
+  display: block;
+  color: #fff8e6;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.evidence-head p {
+  margin: 4px 0 0;
+  color: rgba(255, 248, 230, .68);
+  font-size: .84rem;
+  line-height: 1.35;
+}
+
+.evidence-actions {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.evidence-preview,
+.user-evidence-preview {
+  border: 1px solid rgba(246, 200, 79, .18);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, .20);
+  overflow: hidden;
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.evidence-preview img,
+.user-evidence-preview img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  background: rgba(255,255,255,.035);
+}
+
+.user-evidence-preview img {
+  max-height: 260px;
+}
+
+.pdf-preview-icon {
+  width: 92px;
+  height: 92px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(246, 200, 79, .35);
+  color: #f7dd93;
+  font-size: 1.1rem;
+  font-weight: 1000;
+  margin: 22px auto 10px;
+  background: rgba(246, 200, 79, .08);
+}
+
+.evidence-file-note,
+.user-evidence-preview small {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  color: rgba(255, 248, 230, .68);
+  font-size: .78rem;
+  line-height: 1.35;
+  text-align: center;
+  background: rgba(0,0,0,.20);
+}
+
+.file-only::before {
+  content: "Preview unavailable. Use Open or Download.";
+  color: rgba(255, 248, 230, .70);
+  font-size: .88rem;
+  padding: 24px;
+  text-align: center;
+}
+
+@media(max-width: 720px) {
+  .evidence-head,
+  .user-evidence-head {
+    display: grid;
+  }
+
+  .evidence-actions {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ==========================================================
+   V54: Notification bell dropdown UI fix
+   Root cause:
+   .user-top-actions button height rules were affecting every
+   button inside the dropdown, compressing notification rows.
+   ========================================================== */
+
+/* Only align the direct top-bar action pills, not dropdown children */
+.user-top-actions > a,
+.user-top-actions > button {
+  min-height: 36px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+/* Hard reset every button inside notification dropdown */
+.user-top-actions .notif-panel button,
+.admin-notif-host .notif-panel button,
+.notif-panel button {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  line-height: normal !important;
+}
+
+/* Notification panel sizing and positioning */
+.user-notif-host .notif-panel,
+.admin-notif-host .notif-panel,
+.notif-panel {
+  width: min(390px, 92vw) !important;
+  max-height: 520px !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  z-index: 9999 !important;
+}
+
+.user-notif-host .notif-panel {
+  right: 0 !important;
+  top: calc(100% + 10px) !important;
+}
+
+.admin-notif-host .notif-panel {
+  right: 0 !important;
+  top: calc(100% + 10px) !important;
+}
+
+/* Header row in notification dropdown */
+.notif-panel-head {
+  min-height: 48px !important;
+  height: auto !important;
+  padding: 13px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.notif-panel-head button,
+.user-top-actions .notif-panel-head button,
+.admin-notif-host .notif-panel-head button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255,248,230,.72) !important;
+  font-size: .78rem !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+/* Notification list scroll */
+.notif-list {
+  max-height: 450px !important;
+  overflow-y: auto !important;
+}
+
+/* Notification row: force proper auto-height layout */
+.notif-item,
+.user-top-actions .notif-item,
+.admin-notif-host .notif-item {
+  width: 100% !important;
+  min-height: 82px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: grid !important;
+  grid-template-columns: 10px 1fr !important;
+  align-items: flex-start !important;
+  gap: 11px !important;
+  padding: 13px 32px 13px 16px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(246, 200, 79, .12) !important;
+  background: transparent !important;
+  text-align: left !important;
+  border-radius: 0 !important;
+  color: var(--cream) !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  cursor: pointer !important;
+}
+
+/* Text inside each notification row */
+.notif-item > span:last-child {
+  display: grid !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  padding-right: 0 !important;
+}
+
+.notif-item strong {
+  display: block !important;
+  color: #fff8e6 !important;
+  font-size: .86rem !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.notif-item small {
+  display: block !important;
+  color: rgba(255,248,230,.72) !important;
+  font-size: .76rem !important;
+  line-height: 1.38 !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.notif-item em {
+  display: block !important;
+  color: rgba(255,248,230,.48) !important;
+  font-size: .68rem !important;
+  line-height: 1.2 !important;
+  margin-top: 3px !important;
+  font-style: normal !important;
+  white-space: normal !important;
+}
+
+/* Dot alignment */
+.notif-dot {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  margin-top: 5px !important;
+}
+
+/* Bell itself: keep centered and prevent panel contents from disturbing it */
+.notif-bell-btn {
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+}
+
+.user-top-actions .notif-host,
+.admin-notif-host {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  height: 36px !important;
+  align-self: center !important;
+}
+
+/* Unread count stays on the circle and does not affect layout */
+.notif-count {
+  position: absolute !important;
+  top: -6px !important;
+  right: -6px !important;
+  z-index: 2 !important;
+}
+
+/* Mobile */
+@media(max-width: 720px) {
+  .user-notif-host .notif-panel,
+  .admin-notif-host .notif-panel,
+  .notif-panel {
+    width: min(360px, calc(100vw - 24px)) !important;
+    right: -10px !important;
+  }
+
+  .notif-item,
+  .user-top-actions .notif-item,
+  .admin-notif-host .notif-item {
+    min-height: 92px !important;
+    padding: 13px 30px 13px 14px !important;
+  }
+}
+
+
+/* ==========================================================
+   V55: User evidence render safety fix
+   ========================================================== */
+
+.user-evidence-panel .mini-action-btn,
+.evidence-panel .mini-action-btn {
+  width: auto !important;
+}
+
+
+/* ==========================================================
+   V56: Notification bell badge count fix
+   ========================================================== */
+
+.notif-bell-btn .notif-count,
+.notif-count {
+  position: absolute !important;
+  top: -7px !important;
+  right: -7px !important;
+  z-index: 5 !important;
+  min-width: 19px !important;
+  height: 19px !important;
+  padding: 0 5px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 10.5px !important;
+  font-weight: 1000 !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.72), 0 4px 14px rgba(0,0,0,.35) !important;
+}
+
+.notif-count.is-unread-count {
+  background: #ff5757 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.25) !important;
+}
+
+.notif-count.is-total-count {
+  background: #d9a441 !important;
+  color: #070707 !important;
+  border: 1px solid rgba(255,248,230,.40) !important;
+}
+
+/* Prevent badge from being clipped by host/button */
+.notif-host,
+.user-notif-host,
+.admin-notif-host,
+.notif-bell-btn {
+  overflow: visible !important;
+}
+
+
+/* ==========================================================
+   V57: Bell badge is unread-only
+   Mark all read clears the badge completely.
+   ========================================================== */
+
+.notif-count.is-total-count {
+  display: none !important;
+}
+
+.notif-count.is-unread-count {
+  background: #ff5757 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.25) !important;
+}
+
+
+/* ==========================================================
+   V59: Monthly access Payment ID / UTR mandatory help text
+   ========================================================== */
+
+.utr-info-card {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(246, 200, 79, .26);
+  background: rgba(246, 200, 79, .075);
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: rgba(255, 248, 230, .82);
+  line-height: 1.45;
+}
+
+.utr-info-card strong {
+  display: block;
+  color: #fff4c8;
+  font-size: .94rem;
+  margin-bottom: 5px;
+}
+
+.utr-info-card p {
+  margin: 0;
+  font-size: .85rem;
+}
+
+.payment-id-field input:required {
+  border-color: rgba(246, 200, 79, .55) !important;
+}
+
+
+/* ==========================================================
+   V60: Required field * marker across User/Admin forms
+   ========================================================== */
+
+.required-star {
+  color: #ff6b6b !important;
+  font-weight: 1000 !important;
+  margin-left: 3px !important;
+  letter-spacing: 0 !important;
+}
+
+label.has-required-field {
+  position: relative;
+}
+
+.required-field-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 248, 230, .68);
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 107, 107, .20);
+  background: rgba(255, 107, 107, .07);
+}
+
+.required-field-legend .required-star {
+  margin-left: 0 !important;
+}
+
+/* Keep star aligned when label wraps an input field */
+label.has-required-field > .required-star {
+  display: inline;
+}
+
+/* Admin compact forms */
+.page-admin label.has-required-field .required-star,
+.admin-card label.has-required-field .required-star {
+  color: #ff7a7a !important;
+}
+
+/* User-facing forms */
+.auth-card label.has-required-field .required-star,
+.user-card label.has-required-field .required-star,
+.client-section label.has-required-field .required-star {
+  color: #ff7a7a !important;
+}
+
+
+/* ==========================================================
+   V61: Remove required field legend/pill from all pages
+   ========================================================== */
+
+.required-field-legend {
+  display: none !important;
+}
+
+/* Keep the required star as a small inline mark only */
+.required-star {
+  display: inline !important;
+  color: #ff6b6b !important;
+  font-weight: 1000 !important;
+  margin-left: 3px !important;
+  margin-right: 2px !important;
+  line-height: inherit !important;
+  vertical-align: baseline !important;
+}
+
+/* Avoid the star becoming a full standalone row in wrapped labels */
+label.has-required-field > .required-star {
+  display: inline !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* If a wrapped label has star before input, keep input on its normal line */
+label.has-required-field > .required-star + input,
+label.has-required-field > .required-star + select,
+label.has-required-field > .required-star + textarea {
+  margin-top: 8px;
+}
+
+
+/* ==========================================================
+   V62: Payment Proof mandatory for monthly paid access
+   ========================================================== */
+
+#paymentProofInput[required],
+#accessTicketForm input[name="paymentProof"][required] {
+  border-color: rgba(255, 107, 107, .45) !important;
+}
+
+
+/* ==========================================================
+   V63: Required star inline with label text: Name*
+   ========================================================== */
+
+.required-star {
+  display: inline !important;
+  color: #ff6b6b !important;
+  font-weight: 1000 !important;
+  margin: 0 0 0 2px !important;
+  padding: 0 !important;
+  line-height: inherit !important;
+  vertical-align: baseline !important;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
+}
+
+label.has-required-field > .required-star,
+label.has-required-field .required-star {
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+label.has-required-field > .required-star + input,
+label.has-required-field > .required-star + select,
+label.has-required-field > .required-star + textarea {
+  margin-top: 0 !important;
+}
+
+label.has-required-field small.field-hint,
+label.has-required-field small.field-help,
+label.has-required-field .field-hint,
+label.has-required-field .field-help {
+  display: block;
+  margin-top: 4px;
+}
+
+
+/* ==========================================================
+   V64: Required mark is part of label text itself: Name*
+   ========================================================== */
+
+/* Hide any cached/old DOM star spans so they cannot appear on their own line */
+.required-star {
+  display: none !important;
+}
+
+/* Required label text is already "Name*" / "Email ID*" via JS */
+label.has-required-field {
+  color: inherit;
+}
+
+/* Keep label and field spacing normal */
+label.has-required-field input,
+label.has-required-field select,
+label.has-required-field textarea {
+  margin-top: 8px;
+}
+
+/* Payment proof required border remains visible when monthly access is selected */
+#paymentProofInput[required],
+#accessTicketForm input[name="paymentProof"][required] {
+  border-color: rgba(255, 107, 107, .45) !important;
+}
+
+
+/* ==========================================================
+   V65: Hide monthly payment-only fields for trial access
+   ========================================================== */
+
+.paid-access-only.is-hidden {
+  display: none !important;
+}
+
+#accessTicketForm .paid-access-only.is-hidden input,
+#accessTicketForm .paid-access-only.is-hidden textarea,
+#accessTicketForm .paid-access-only.is-hidden select {
+  display: none !important;
+}
+
+.access-note-field.is-hidden,
+.payment-id-field.is-hidden,
+.payment-proof-field.is-hidden,
+#utrInfoCard.is-hidden {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V66: Trial hides monthly payment fields, but values are preserved
+   ========================================================== */
+
+#accessTicketForm .paid-access-only.is-hidden,
+#accessTicketForm .paid-access-only[hidden],
+.paid-access-only.is-hidden,
+.paid-access-only[hidden] {
+  display: none !important;
+}
+
+#accessTicketForm .payment-id-field.is-hidden,
+#accessTicketForm .payment-proof-field.is-hidden,
+#accessTicketForm .access-note-field.is-hidden,
+#accessTicketForm #utrInfoCard.is-hidden {
+  display: none !important;
+}
+
+/* When monthly is selected, required labels stay inline: Payment ID / UTR* */
+#accessTicketForm .payment-id-field.has-required-field,
+#accessTicketForm .payment-proof-field.has-required-field {
+  display: block;
+}
+
+
+/* ==========================================================
+   V67: Monthly fields return when monthly access is selected
+   ========================================================== */
+
+#accessTicketForm .paid-access-only:not(.is-hidden):not([hidden]) {
+  display: block !important;
+}
+
+#accessTicketForm .paid-access-only:not(.is-hidden):not([hidden]).utr-info-card {
+  display: block !important;
+}
+
+#accessTicketForm .paid-access-only.is-hidden,
+#accessTicketForm .paid-access-only[hidden] {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V68: Access card UTR/access-type visibility
+   ========================================================== */
+
+.access-card .detail-grid strong,
+.ticket-card .detail-grid strong,
+.admin-ticket-card .detail-grid strong {
+  overflow-wrap: anywhere;
+}
+
+.access-card .detail-grid span,
+.ticket-card .detail-grid span,
+.admin-ticket-card .detail-grid span {
+  white-space: normal;
+}
+
+
+/* ==========================================================
+   V69: Remove Paste Saved Details and make submit full width
+   ========================================================== */
+
+#pasteDetailsBtn {
+  display: none !important;
+}
+
+#accessTicketForm .access-submit-btn,
+#accessTicketForm button[type="submit"] {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+}
+
+#accessTicketForm .form-actions,
+#accessTicketForm .actions,
+#accessTicketForm .button-row,
+#accessTicketForm .btn-row {
+  grid-template-columns: 1fr !important;
+}
+
+
+/* ==========================================================
+   V70: Paste button fallback + access submit full width
+   ========================================================== */
+
+#pasteDetailsBtn {
+  display: none !important;
+}
+
+#accessTicketForm .access-submit-btn,
+#accessTicketForm button[type="submit"] {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+}
+
+
+/* ==========================================================
+   V75: Clear pending access wording
+   ========================================================== */
+
+.access-request-card .request-type {
+  letter-spacing: .16em;
+}
+
+.access-request-card h3.status-orange-text,
+.access-request-card h3.status-neutral-text {
+  color: #ffd76a !important;
+}
+
+
+/* ==========================================================
+   V80: Active Access Dashboard + remove in-page notification list
+   ========================================================== */
+
+#userNotifications,
+#userNotificationsBox {
+  display: none !important;
+}
+
+.active-access-card {
+  border: 1px solid rgba(217, 164, 65, .26);
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(217,164,65,.07));
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 16px 38px rgba(0,0,0,.20);
+}
+
+.active-access-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.active-access-head h3 {
+  margin: 4px 0 5px;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  color: #f6d67a;
+}
+
+.active-access-head p {
+  margin: 0;
+  color: rgba(255, 248, 230, .74);
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.active-access-grid {
+  margin-top: 12px;
+}
+
+.active-access-extra {
+  margin-top: 12px;
+  color: rgba(255, 248, 230, .70);
+  font-size: .86rem;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 10px;
+}
+
+.active-access-card.active-success {
+  border-color: rgba(74, 222, 128, .30);
+}
+
+.active-access-card.active-warning {
+  border-color: rgba(250, 204, 21, .42);
+  background: linear-gradient(135deg, rgba(250,204,21,.10), rgba(217,164,65,.07));
+}
+
+.active-access-card.active-danger {
+  border-color: rgba(248, 113, 113, .38);
+  background: linear-gradient(135deg, rgba(248,113,113,.10), rgba(217,164,65,.05));
+}
+
+.active-access-card.active-neutral {
+  border-color: rgba(255,255,255,.14);
+}
+
+@media (max-width: 680px) {
+  .active-access-head {
+    flex-direction: column;
+  }
+}
+
+
+/* ==========================================================
+   V81: Clear User + Admin dashboards
+   ========================================================== */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+
+.user-dashboard-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.admin-dashboard-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dashboard-metric {
+  border: 1px solid rgba(217, 164, 65, .22);
+  background: rgba(255,255,255,.055);
+  border-radius: 18px;
+  padding: 14px;
+  min-height: 104px;
+  box-shadow: 0 14px 32px rgba(0,0,0,.16);
+}
+
+.dashboard-metric strong {
+  display: block;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1;
+  color: #f6d67a;
+  margin-bottom: 7px;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-metric span {
+  display: block;
+  color: rgba(255, 248, 230, .86);
+  font-weight: 900;
+  font-size: .88rem;
+}
+
+.dashboard-metric small {
+  display: block;
+  color: rgba(255, 248, 230, .62);
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
+.dashboard-metric.tone-success {
+  border-color: rgba(74, 222, 128, .28);
+  background: linear-gradient(135deg, rgba(74,222,128,.10), rgba(255,255,255,.045));
+}
+
+.dashboard-metric.tone-warning {
+  border-color: rgba(250, 204, 21, .38);
+  background: linear-gradient(135deg, rgba(250,204,21,.11), rgba(255,255,255,.045));
+}
+
+.dashboard-metric.tone-danger {
+  border-color: rgba(248, 113, 113, .34);
+  background: linear-gradient(135deg, rgba(248,113,113,.12), rgba(255,255,255,.045));
+}
+
+.dashboard-metric.tone-info {
+  border-color: rgba(96, 165, 250, .26);
+  background: linear-gradient(135deg, rgba(96,165,250,.10), rgba(255,255,255,.045));
+}
+
+.dashboard-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.dashboard-panel {
+  border: 1px solid rgba(217, 164, 65, .18);
+  border-radius: 20px;
+  padding: 14px;
+  background: rgba(0,0,0,.13);
+}
+
+.dashboard-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dashboard-panel-head h3 {
+  margin: 0;
+  color: #f6d67a;
+  font-size: 1rem;
+}
+
+.dashboard-panel-head a {
+  color: #f6d67a;
+  font-weight: 900;
+  font-size: .82rem;
+  text-decoration: none;
+}
+
+.dashboard-list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 10px 0;
+}
+
+.dashboard-list-item:first-of-type {
+  border-top: 0;
+}
+
+.dashboard-list-item strong {
+  display: block;
+  color: rgba(255,248,230,.95);
+}
+
+.dashboard-list-item span,
+.dashboard-list-item small {
+  display: block;
+  color: rgba(255,248,230,.62);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.dashboard-list-meta {
+  text-align: right;
+  min-width: 110px;
+}
+
+@media (max-width: 980px) {
+  .dashboard-grid,
+  .user-dashboard-grid,
+  .admin-dashboard-grid,
+  .dashboard-panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .dashboard-grid,
+  .user-dashboard-grid,
+  .admin-dashboard-grid,
+  .dashboard-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-list-item {
+    flex-direction: column;
+  }
+
+  .dashboard-list-meta {
+    text-align: left;
+  }
+}
+
+
+/* ==========================================================
+   V82: Admin approval queue dashboard
+   ========================================================== */
+
+.approval-queue-panel {
+  border-radius: 24px;
+  padding: 18px;
+  margin: 12px 0 18px;
+  border: 1px solid rgba(217, 164, 65, .28);
+  background: linear-gradient(135deg, rgba(217,164,65,.12), rgba(255,255,255,.045));
+  box-shadow: 0 18px 45px rgba(0,0,0,.24);
+}
+
+.approval-queue-panel.needs-action {
+  border-color: rgba(250, 204, 21, .48);
+}
+
+.approval-queue-panel.is-clear {
+  border-color: rgba(74, 222, 128, .30);
+  background: linear-gradient(135deg, rgba(74,222,128,.09), rgba(255,255,255,.035));
+}
+
+.approval-queue-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.approval-queue-head h3 {
+  margin: 3px 0 6px;
+  color: #f6d67a;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+}
+
+.approval-queue-head p {
+  margin: 0;
+  color: rgba(255, 248, 230, .72);
+  line-height: 1.45;
+}
+
+.approval-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.approval-quick-stats div {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  border-radius: 16px;
+  padding: 11px;
+}
+
+.approval-quick-stats strong {
+  display: block;
+  color: #f6d67a;
+  font-size: 1.45rem;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.approval-quick-stats span {
+  display: block;
+  color: rgba(255,248,230,.70);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.approval-queue-list {
+  display: grid;
+  gap: 10px;
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.approval-queue-item {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.approval-queue-item.paid-request {
+  border-left: 4px solid rgba(250, 204, 21, .80);
+}
+
+.approval-queue-item.trial-request {
+  border-left: 4px solid rgba(96, 165, 250, .80);
+}
+
+.approval-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.approval-title-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.approval-title-row strong {
+  color: rgba(255,248,230,.96);
+  font-size: 1rem;
+}
+
+.approval-main p {
+  margin: 7px 0 10px;
+  color: rgba(255,248,230,.64);
+}
+
+.approval-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 14px;
+  color: rgba(255,248,230,.70);
+  font-size: .83rem;
+}
+
+.approval-meta-grid span {
+  overflow-wrap: anywhere;
+}
+
+.approval-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 130px;
+}
+
+.mini-status {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: .73rem;
+  font-weight: 900;
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,248,230,.92);
+}
+
+.mini-status.tone-success {
+  background: rgba(74,222,128,.12);
+  border-color: rgba(74,222,128,.28);
+}
+
+.mini-status.tone-danger {
+  background: rgba(248,113,113,.14);
+  border-color: rgba(248,113,113,.32);
+}
+
+.mini-status.tone-info {
+  background: rgba(96,165,250,.12);
+  border-color: rgba(96,165,250,.28);
+}
+
+.btn.mini {
+  padding: 8px 11px;
+  font-size: .78rem;
+}
+
+.single-important-panel {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 860px) {
+  .approval-queue-head,
+  .approval-main {
+    flex-direction: column;
+  }
+
+  .approval-actions {
+    align-items: flex-start;
+  }
+
+  .approval-quick-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .approval-meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V83: Clean Admin Dashboard
+   ========================================================== */
+
+.admin-dashboard-card {
+  max-width: 920px;
+}
+
+.clean-approval-panel {
+  padding: 16px;
+  margin: 10px 0 16px;
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+}
+
+.clean-approval-panel .compact-head {
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.clean-approval-panel.needs-action .compact-head {
+  margin-bottom: 12px;
+}
+
+.clean-approval-panel .approval-queue-head h3 {
+  font-size: clamp(1.12rem, 1.65vw, 1.42rem);
+  margin: 2px 0 5px;
+}
+
+.clean-approval-panel .approval-queue-head p {
+  font-size: .9rem;
+}
+
+.clean-approval-panel.is-clear {
+  background: linear-gradient(135deg, rgba(74,222,128,.10), rgba(255,255,255,.035));
+  border-color: rgba(74,222,128,.28);
+}
+
+.clean-approval-panel.needs-action {
+  background: linear-gradient(135deg, rgba(217,164,65,.11), rgba(255,255,255,.035));
+  border-color: rgba(250,204,21,.36);
+}
+
+.approval-quick-stats {
+  display: none !important;
+}
+
+.compact-approval-list {
+  max-height: 360px;
+  gap: 8px;
+}
+
+.compact-approval-item {
+  padding: 11px 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.15);
+}
+
+.compact-approval-item .approval-main {
+  align-items: center;
+}
+
+.compact-approval-item .approval-title-row {
+  gap: 8px;
+}
+
+.compact-approval-item p {
+  margin: 5px 0 0;
+  font-size: .84rem;
+}
+
+.approval-compact-meta {
+  color: rgba(255,248,230,.55) !important;
+  overflow-wrap: anywhere;
+}
+
+.clean-admin-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 0;
+}
+
+.clean-admin-metrics .dashboard-metric {
+  min-height: 88px;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: none;
+  background: rgba(255,255,255,.045);
+}
+
+.clean-admin-metrics .dashboard-metric strong {
+  font-size: clamp(1.35rem, 1.9vw, 1.8rem);
+}
+
+.clean-admin-metrics .dashboard-metric span {
+  font-size: .84rem;
+}
+
+.clean-admin-metrics .dashboard-metric small {
+  font-size: .76rem;
+}
+
+.dashboard-panels.single-important-panel {
+  display: none !important;
+}
+
+@media (max-width: 860px) {
+  .clean-admin-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clean-approval-panel .compact-head {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .clean-admin-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V84: Clickable Admin Dashboard shortcuts
+   ========================================================== */
+
+.dashboard-metric.dashboard-clickable {
+  cursor: pointer;
+  position: relative;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.dashboard-metric.dashboard-clickable:hover,
+.dashboard-metric.dashboard-clickable:focus {
+  transform: translateY(-2px);
+  border-color: rgba(246, 214, 122, .52);
+  background: linear-gradient(135deg, rgba(217,164,65,.13), rgba(255,255,255,.055));
+  outline: none;
+}
+
+.dashboard-metric.dashboard-clickable em {
+  display: inline-flex;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: .72rem;
+  font-weight: 900;
+  color: #f6d67a;
+  opacity: .88;
+}
+
+.section-focus-pulse {
+  animation: sectionFocusPulse 1.2s ease;
+}
+
+@keyframes sectionFocusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(246, 214, 122, .42);
+  }
+  55% {
+    box-shadow: 0 0 0 7px rgba(246, 214, 122, .10);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(246, 214, 122, 0);
+  }
+}
+
+
+/* ==========================================================
+   V85: Admin bell-only notifications
+   ========================================================== */
+
+#notifications,
+#adminNotificationsBox {
+  display: none !important;
+}
+
+.clean-admin-metrics {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@media (max-width: 980px) {
+  .clean-admin-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .clean-admin-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V86: Admin-controlled Pricing + Payment Settings
+   ========================================================== */
+
+.admin-form-section-title {
+  grid-column: 1 / -1;
+  color: #f6d67a;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 14px;
+  margin-top: 6px;
+}
+
+.payment-preview-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid rgba(217,164,65,.22);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,.045);
+}
+
+.payment-preview-card strong,
+.payment-preview-card span {
+  display: block;
+}
+
+.payment-preview-card strong {
+  color: #f6d67a;
+}
+
+.payment-preview-card span {
+  color: rgba(255,248,230,.66);
+}
+
+.payment-preview-card img {
+  width: 142px;
+  height: 142px;
+  border-radius: 14px;
+  background: #fff;
+  padding: 8px;
+}
+
+.available-plans-box {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.plan-pill {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(217,164,65,.18);
+  background: rgba(255,255,255,.045);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.plan-pill strong {
+  color: rgba(255,248,230,.95);
+}
+
+.plan-pill span {
+  color: rgba(255,248,230,.62);
+  font-size: .86rem;
+}
+
+.access-payment-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  gap: 16px;
+  border: 1px solid rgba(217,164,65,.24);
+  border-radius: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(217,164,65,.10), rgba(255,255,255,.045));
+}
+
+.access-payment-card strong {
+  color: #f6d67a;
+}
+
+.access-payment-card p {
+  color: rgba(255,248,230,.68);
+  margin: 6px 0 10px;
+}
+
+.access-payment-qr img {
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 8px;
+}
+
+@media (max-width: 680px) {
+  .payment-preview-card,
+  .access-payment-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V87: Notification channels + Telegram/TradingView tracking
+   ========================================================== */
+
+.access-delivery-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.delivery-status-card {
+  border: 1px solid rgba(217,164,65,.20);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255,255,255,.045);
+}
+
+.delivery-status-card span,
+.delivery-status-card small {
+  display: block;
+  color: rgba(255,248,230,.62);
+  font-size: .78rem;
+}
+
+.delivery-status-card strong {
+  display: block;
+  color: #f6d67a;
+  margin: 4px 0;
+  font-size: 1rem;
+}
+
+.delivery-status-card a {
+  color: #f6d67a;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.access-ops-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.access-ops-panel > div {
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(0,0,0,.14);
+}
+
+.access-ops-panel h4 {
+  margin: 0 0 10px;
+  color: #f6d67a;
+}
+
+.access-ops-panel select {
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.ticket-activity-details {
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  padding: 12px;
+  margin: 12px 0;
+  background: rgba(0,0,0,.12);
+}
+
+.ticket-activity-details summary {
+  cursor: pointer;
+  color: #f6d67a;
+  font-weight: 900;
+}
+
+.ticket-activity-log {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ticket-activity-row {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 8px;
+}
+
+.ticket-activity-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ticket-activity-row strong,
+.ticket-activity-row span {
+  display: block;
+}
+
+.ticket-activity-row strong {
+  color: rgba(255,248,230,.92);
+  font-size: .88rem;
+}
+
+.ticket-activity-row span {
+  color: rgba(255,248,230,.56);
+  font-size: .76rem;
+  margin-top: 3px;
+}
+
+.mini-link-btn {
+  margin-top: 7px;
+  display: inline-flex;
+  padding: 7px 10px !important;
+  font-size: .78rem !important;
+}
+
+.success-text {
+  color: #73e09b !important;
+}
+
+.warning-text {
+  color: #f6d67a !important;
+}
+
+.danger-text {
+  color: #ff8a8a !important;
+}
+
+.neutral-text {
+  color: rgba(255,248,230,.78) !important;
+}
+
+@media (max-width: 760px) {
+  .access-delivery-panel,
+  .access-ops-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V88: Multiple Telegram groups/channels
+   ========================================================== */
+
+.telegram-destination-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.telegram-destination-row {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,.035);
+}
+
+.telegram-destination-row.has-error {
+  border-color: rgba(248,113,113,.32);
+  background: rgba(248,113,113,.07);
+}
+
+.telegram-destination-row strong,
+.telegram-destination-row span,
+.telegram-destination-row a,
+.telegram-destination-row small {
+  display: block;
+}
+
+.telegram-destination-row strong {
+  color: rgba(255,248,230,.95);
+}
+
+.telegram-destination-row span,
+.telegram-destination-row small {
+  color: rgba(255,248,230,.56);
+  font-size: .76rem;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.telegram-destination-row a {
+  color: #f6d67a;
+  font-weight: 900;
+  font-size: .78rem;
+  margin-top: 5px;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.telegram-destination-row select {
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.user-telegram-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 7px;
+}
+
+@media (max-width: 760px) {
+  .telegram-destination-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   V90: Required user automation fields
+   ========================================================== */
+
+.field-help-card {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(217, 164, 65, .22);
+  border-radius: 16px;
+  background: rgba(217, 164, 65, .075);
+  padding: 12px 14px;
+  color: rgba(255, 248, 230, .76);
+  line-height: 1.45;
+}
+
+.field-help-card strong {
+  color: #f6d67a;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.field-help-card span {
+  display: block;
+  font-size: .88rem;
+}
+
+.field-help-card b {
+  color: rgba(255, 248, 230, .95);
+}
+
+
+/* ==========================================================
+   V91: Trial feedback popup
+   ========================================================== */
+
+.feedback-popup-card {
+  max-width: 560px;
+}
+
+.feedback-popup-card .section-kicker {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.feedback-popup-card textarea {
+  min-height: 110px;
+}
+
+.feedback-popup-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.feedback-popup-actions .btn {
+  flex: 1 1 180px;
+}
+
+#trialFeedbackPopup .modal-copy {
+  margin-bottom: 14px;
+}
+
+#trialFeedbackPopupMsg .notice {
+  margin-top: 10px;
+}
+
+
+/* ==========================================================
+   V92: Feedback attachment/profit screenshot
+   ========================================================== */
+
+.feedback-attachment-help {
+  margin: -4px 0 8px;
+  color: rgba(255, 248, 230, .62);
+  font-size: .84rem;
+}
+
+.trial-feedback-admin-panel {
+  border: 1px solid rgba(217, 164, 65, .22);
+  border-radius: 18px;
+  background: rgba(217, 164, 65, .065);
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.trial-feedback-admin-panel h4 {
+  margin: 0 0 8px;
+  color: #f6d67a;
+}
+
+.trial-feedback-admin-panel p {
+  margin: 6px 0;
+}
+
+
+/* ==========================================================
+   V93: Multiple Telegram bots per destination
+   ========================================================== */
+
+.telegram-destination-row span {
+  line-height: 1.35;
+}
+
+
+/* ==========================================================
+   V94: Auto Telegram invites on approval
+   ========================================================== */
+
+.access-ops-panel .microcopy {
+  margin: 8px 0 10px;
+  color: rgba(255,248,230,.62);
+  font-size: .82rem;
+}
+
+
+/* ==========================================================
+   V96: Telegram Numeric User ID save fix
+   ========================================================== */
+
+.telegram-numeric-help {
+  border-color: rgba(115, 224, 155, .24);
+}
+
+
+/* ==========================================================
+   V97: Compact optional Telegram Numeric ID
+   ========================================================== */
+
+.optional-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 7px;
+  border: 1px solid rgba(255, 248, 230, .16);
+  border-radius: 999px;
+  color: rgba(255, 248, 230, .58);
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 248, 230, .54);
+  font-size: .76rem;
+  line-height: 1.35;
+}
+
+
+/* ==========================================================
+   V98: Optional marks cleanup
+   ========================================================== */
+
+/* Optional field rule: no star, no badge. */
+.optional-tag {
+  display: none !important;
+}
+
+/* Keep hints small only where still used, like monthly payment instructions. */
+.field-hint {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 248, 230, .54);
+  font-size: .76rem;
+  line-height: 1.35;
+}
+
+
+/* ==========================================================
+   V99: Telegram Numeric ID removed from user-facing forms
+   ========================================================== */
+
+.optional-tag,
+.telegram-numeric-help {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   V101: Restore Login + Create Account two-panel layout
+   ========================================================== */
+
+.login-clean-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.login-auth-card,
+.register-auth-card {
+  height: 100%;
+}
+
+.forgot-link {
+  display: block;
+  margin: -2px 0 14px auto;
+  color: #f6d67a;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+@media (max-width: 860px) {
+  .login-clean-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,11 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="760" fill="#050403"/>
+<rect x="54" y="54" width="1092" height="652" rx="42" fill="#0c0906" stroke="#3f2f0d" stroke-width="2"/>
+<text x="95" y="130" fill="#F8C84E" font-family="Arial" font-size="42" font-weight="700">WhaleX Profit Gallery</text>
+<text x="95" y="178" fill="#B9AE96" font-family="Arial" font-size="22">Upload real user screenshots from the admin/user panel after permission.</text>
+<path d="M120 560L265 460L390 500L548 360L695 410L860 245L1050 310" stroke="#F8C84E" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="95" y="230" width="260" height="106" rx="24" fill="#151006" stroke="#4a350c"/>
+<text x="130" y="274" fill="#B9AE96" font-family="Arial" font-size="20">Sample result</text>
+<text x="130" y="316" fill="#35E7A2" font-family="Arial" font-size="36" font-weight="700">+₹ XX,XXX</text>
+<text x="95" y="660" fill="#FFDCE2" font-family="Arial" font-size="20">Disclaimer: Trading involves risk. Results are user-shared and not guaranteed.</text>
+</svg>

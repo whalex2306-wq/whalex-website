@@ -1,0 +1,27 @@
+{
+  "name": "whalex-v101-restore-login-create-account",
+  "version": "101.0.0",
+  "description": "WhaleX website with clearer pending access request wording.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test:backend-flow": "node scripts/backend-flow-test.js",
+    "test:backend-flow:local": "BASE_URL=http://localhost:3000 node scripts/backend-flow-test.js",
+    "restore:content": "node scripts/restore-production-content.js",
+    "test:notifications": "node scripts/backend-flow-test.js",
+    "test:email": "node scripts/email-smoke-test.js",
+    "check:deploy": "node scripts/deployment-check.js",
+    "health": "node -e \"fetch(process.env.BASE_URL || 'http://localhost:3000/api/health').then(r=>r.json()).then(console.log).catch(e=>{console.error(e.message);process.exit(1)})\""
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.3",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.16",
+    "qrcode": "^1.5.4",
+    "pdfkit": "^0.15.0"
+  }
+}

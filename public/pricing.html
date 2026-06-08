@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhaleX Buy Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/whalex-logo.png" />
+  <link rel="stylesheet" href="assets/slide-style.css" />
+</head>
+<body class="page-pricing">
+
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="brand">
+      <img src="assets/whalex-logo.png" alt="WhaleX Logo" class="brand-img" />
+      <span class="brand-text">WhaleX</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Indicators</a>
+      <a href="results.html">Reviews & Results</a>
+      <a href="videos.html">Videos</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="login.html">Login to Buy</a>
+      <a href="user.html" class="requires-login">My Access</a>
+    </div>
+  </nav>
+</header>
+
+
+
+<main class="screen-shell">
+  <section class="screen-page">
+    <div class="container page-screen-layout">
+      <aside class="page-intro">
+        <div class="eyebrow">Buy Access</div>
+        <h1>Get WhaleX access.</h1>
+        <p></p>
+        <div class="hero-actions">
+          <a class="btn ghost" href="login.html">Login to Buy</a>
+          <a class="btn ghost requires-login" href="user.html?plan=trial#access">Request Trial</a>
+        </div>
+      </aside>
+
+      <section class="pricing-screen-grid">
+        <article class="price-screen-card">
+          <div class="badge">Launch Offer</div>
+          <h2 id="planName">WhaleX V1 Access</h2>
+          <div class="old-price" id="oldPrice">₹15,000</div>
+          <div class="price" id="currentPrice">₹10,000</div>
+          <div class="discount" id="discountText">Launch discount: Save ₹5,000</div>
+          <ul>
+            <li>WhaleX access</li>
+            <li>WhaleX OrderFlow access</li>
+            <li>WhaleX Risk Manager access</li>
+            <li>TradingView invite-only activation</li>
+            <li>3-day trial request available</li>
+          </ul>
+          <div id="availablePlansBox" class="available-plans-box"></div>
+          <a class="btn primary full" id="razorpayBtn" href="#" target="_blank" rel="noopener">Pay Now</a>
+        </article>
+
+        <article class="upi-screen-card">
+          <div class="badge muted">Pay via UPI</div>
+          <h3>Scan & Pay via UPI</h3>
+          <p class="upi-helper-text">Use this option if you prefer UPI QR / manual UPI payment. After payment, submit your UTR or payment proof from My Access.</p>
+          <div class="upi-box"><span>UPI ID</span><strong id="upiId">YOUR_UPI_ID_HERE</strong></div><div class="upi-box"><span>Payee</span><strong id="upiPayeeName">WhaleX</strong></div>
+          <div class="upi-qr-box">
+            <img id="upiQrImage" src="/api/payment/upi-qr.svg" alt="WhaleX UPI QR code" />
+            <span>Scan this QR to pay via UPI</span>
+          </div>
+          <a class="btn ghost full requires-login" href="user.html?plan=paid#access">Submit Payment Details</a>
+        </article>
+      </section>
+    </div>
+  </section>
+</main>
+
+
+
+<footer class="compact-footer">
+  <div class="container compact-footer-inner">
+    <span>© WhaleX</span>
+    <div>
+      <a href="login.html">Login</a>
+      <a href="pricing.html">Buy Access</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/toast.js?v=101"></script>
+<script src="assets/required-marker.js?v=101"></script>
+<script src="assets/menu.js?v=101"></script>
+<script src="assets/slide-app.js?v=101"></script>
+<script src="assets/auth-guard.js?v=101"></script>
+<script src="assets/site-user.js?v=101"></script>
+</body>
+</html>
