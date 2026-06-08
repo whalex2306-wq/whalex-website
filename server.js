@@ -3783,70 +3783,42 @@ app.get("/api/admin/monthly-reports", auth, async (_req, res, next) => {
 });
 
 // =====================================================
-// V53 CLEAN ROUTES + NESTED ASSET FIX - WhaleX
-// Makes clean URLs work AND keeps CSS/JS/images loading.
+// V54 SAFE ROUTE REDIRECTS - WhaleX
+// Clean URLs now redirect to the existing working .html pages.
+// This avoids blank/broken pages caused by frontend scripts that
+// depend on the original .html pathname.
 // Keep this block BEFORE the Express error handler.
 // =====================================================
-function sendWhaleXPage(fileName) {
-  return (_req, res, next) => {
-    const filePath = path.join(PUBLIC_DIR, fileName);
-    if (!fs.existsSync(filePath)) return next();
-
+function redirectToPage(target) {
+  return (_req, res) => {
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
     res.setHeader("Pragma", "no-cache");
     res.setHeader("Expires", "0");
-
-    return res.sendFile(filePath);
+    return res.redirect(302, target);
   };
 }
 
-function redirectClean(target) {
-  return (_req, res) => res.redirect(302, target);
-}
+// Admin aliases
+app.get("/admin", redirectToPage("/whalex-admin.html"));
+app.get("/admin/", redirectToPage("/whalex-admin.html"));
+app.get("/admin/login", redirectToPage("/whalex-admin.html"));
+app.get("/admin/login/", redirectToPage("/whalex-admin.html"));
+app.get("/whalex-admin", redirectToPage("/whalex-admin.html"));
+app.get("/whalex-admin/", redirectToPage("/whalex-admin.html"));
 
-// When an HTML file is served from a clean nested URL such as /admin/login or /user/login,
-// relative links like assets/app.css can be requested as /admin/assets/app.css or /user/assets/app.css.
-// This compatibility middleware maps those nested asset/upload paths back to the real public folder.
-app.use((req, res, next) => {
-  const match = req.path.match(/^\/(admin|user|my-access)\/(assets|uploads)\/(.+)$/);
-  if (!match) return next();
+// User login aliases
+app.get("/login", redirectToPage("/login.html"));
+app.get("/login/", redirectToPage("/login.html"));
+app.get("/user/login", redirectToPage("/login.html"));
+app.get("/user/login/", redirectToPage("/login.html"));
 
-  const [, _section, folder, filePart] = match;
-  const safePart = path.normalize(decodeURIComponent(filePart)).replace(/^([.][.][\/\\])+/, "");
-  const baseDir = path.join(PUBLIC_DIR, folder);
-  const filePath = path.join(baseDir, safePart);
-
-  if (!filePath.startsWith(baseDir + path.sep)) {
-    return res.status(400).send("Bad request");
-  }
-  if (!fs.existsSync(filePath)) return next();
-
-  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-  res.setHeader("Pragma", "no-cache");
-  res.setHeader("Expires", "0");
-  return res.sendFile(filePath);
-});
-
-// Clean public/admin URLs.
-app.get("/admin", sendWhaleXPage("whalex-admin.html"));
-app.get("/whalex-admin", redirectClean("/admin"));
-app.get("/admin/login", redirectClean("/admin"));
-app.get("/admin/", redirectClean("/admin"));
-app.get("/admin/login/", redirectClean("/admin"));
-app.get("/whalex-admin/", redirectClean("/admin"));
-
-app.get("/login", sendWhaleXPage("login.html"));
-app.get("/user/login", redirectClean("/login"));
-app.get("/login/", redirectClean("/login"));
-app.get("/user/login/", redirectClean("/login"));
-
-app.get("/user", sendWhaleXPage("user.html"));
-app.get("/my-access", redirectClean("/user"));
-app.get("/user/", redirectClean("/user"));
-app.get("/my-access/", redirectClean("/user"));
-
-app.get("/dashboard", redirectClean("/user"));
-app.get("/dashboard/", redirectClean("/user"));
+// User portal aliases
+app.get("/user", redirectToPage("/user.html"));
+app.get("/user/", redirectToPage("/user.html"));
+app.get("/my-access", redirectToPage("/user.html"));
+app.get("/my-access/", redirectToPage("/user.html"));
+app.get("/dashboard", redirectToPage("/user.html"));
+app.get("/dashboard/", redirectToPage("/user.html"));
 
 app.use((err, _req, res, _next) => {
   console.error(err);
